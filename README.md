@@ -1,6 +1,6 @@
 # OOTyW
 
-OpenOffice typography tools , especially for yWriter users.
+OpenOffice typography tools for yWriter users.
 
 ## Features
 
