@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Common" script:language="StarBasic">REM  *****  BASIC  *****
+
+&apos; Typographische Korrekturen für deutschsprachige Texte
+&apos; 
+&apos; summary: Converts keyboard characters into typographically correct characters.
+&apos; author: Peter Triesberger
+&apos; see: https://github.com/peter88213/yW2OO
+&apos; license: The MIT License (https://opensource.org/licenses/mit-license.php)
+&apos; copyright: (c) 2018, Peter Triesberger
+&apos; version: v1.0.0
+&apos;
+&apos; Wandelt die per Tastatur eingegebenen Hilfszeichen in typographisch korrekte Zeichen um.
+&apos; Apostrophe: # --&gt; ’
+&apos; Ellipsis: ... --&gt; …
+&apos; En_dash: -- --&gt; –
+&apos; Interruption: put non-breakable blanks at dashes and ellipses.
+
+&apos; Konvertiert Chevrons in deutsche Anführungszeichen und umgekehrt.
+
+
+
+Sub Main
+Apostrophe
+Ellipsis
+End Sub
+
+
+Sub Apostrophe
+&apos; ----------------------------------------------------------------------
+&apos; Convert number signs into apostrophes
+&apos; ----------------------------------------------------------------------
+
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+Dim alt(1) As String
+Dim neu(1) As String
+
+alt() =Array(&quot;#&quot;)
+neu() =Array(&quot;’&quot;)
+
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
+
+For I = 0 to 0
+	Replace.SearchString = alt(I)
+	Replace.ReplaceString = neu(I)
+	Doc.replaceAll(Replace)
+Next I
+
+End Sub
+
+
+
+Sub Ellipsis
+&apos; ----------------------------------------------------------------------
+&apos; Convert three periods into ellipsis
+&apos; ----------------------------------------------------------------------
+
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+Dim alt(0) As String
+Dim neu(0) As String
+
+alt() =Array(&quot;...&quot;)
+neu() =Array(&quot;…&quot;)
+
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
+
+For I = 0 to 0
+	Replace.SearchString = alt(I)
+	Replace.ReplaceString = neu(I)
+	Doc.replaceAll(Replace)
+Next I
+
+End Sub
+
+
+
+sub En_dash
+&apos; ----------------------------------------------------------------------
+&apos; Convert double hyphens into en-dashes
+&apos; ----------------------------------------------------------------------
+
+dim document   as object
+dim dispatcher as object
+
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+dim args1(18) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;SearchItem.StyleFamily&quot;
+args1(0).Value = 2
+args1(1).Name = &quot;SearchItem.CellType&quot;
+args1(1).Value = 0
+args1(2).Name = &quot;SearchItem.RowDirection&quot;
+args1(2).Value = true
+args1(3).Name = &quot;SearchItem.AllTables&quot;
+args1(3).Value = false
+args1(4).Name = &quot;SearchItem.Backward&quot;
+args1(4).Value = false
+args1(5).Name = &quot;SearchItem.Pattern&quot;
+args1(5).Value = false
+args1(6).Name = &quot;SearchItem.Content&quot;
+args1(6).Value = false
+args1(7).Name = &quot;SearchItem.AsianOptions&quot;
+args1(7).Value = false
+args1(8).Name = &quot;SearchItem.AlgorithmType&quot;
+args1(8).Value = 0
+args1(9).Name = &quot;SearchItem.SearchFlags&quot;
+args1(9).Value = 65536
+args1(10).Name = &quot;SearchItem.SearchString&quot;
+args1(10).Value = &quot;--&quot;
+args1(11).Name = &quot;SearchItem.ReplaceString&quot;
+args1(11).Value = &quot;–&quot;
+args1(12).Name = &quot;SearchItem.Locale&quot;
+args1(12).Value = 255
+args1(13).Name = &quot;SearchItem.ChangedChars&quot;
+args1(13).Value = 2
+args1(14).Name = &quot;SearchItem.DeletedChars&quot;
+args1(14).Value = 2
+args1(15).Name = &quot;SearchItem.InsertedChars&quot;
+args1(15).Value = 2
+args1(16).Name = &quot;SearchItem.TransliterateFlags&quot;
+args1(16).Value = 1280
+args1(17).Name = &quot;SearchItem.Command&quot;
+args1(17).Value = 3
+args1(18).Name = &quot;Quiet&quot;
+args1(18).Value = true
+
+dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args1())
+
+end sub
+
+
+
+Sub Interruption
+&apos; ----------------------------------------------------------------------
+&apos; Put non-breakable blanks at dashes and ellipses
+&apos; ----------------------------------------------------------------------
+
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+Dim alt(3) As String
+Dim neu(3) As String
+
+alt() =Array(&quot; –«&quot;,&quot;»– &quot;,&quot; …«&quot;,&quot;»… &quot;)
+neu() =Array(Chr(160)+&quot;–«&quot;,&quot;»–&quot;+Chr(160),Chr(160)+&quot;…«&quot;,&quot;»…&quot;+Chr(160))
+
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
+
+For I = 0 to 3
+	Replace.SearchString = alt(I)
+	Replace.ReplaceString = neu(I)
+	Doc.replaceAll(Replace)
+Next I
+
+End Sub
+
+
+
+</script:module>

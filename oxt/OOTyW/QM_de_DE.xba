@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_de_DE" script:language="StarBasic">REM  *****  BASIC  *****
+
+&apos; Typographische Korrekturen für deutschsprachige Texte
+&apos; 
+&apos; summary: Converts german type quotation marks into german type chevrons and vice versa.
+&apos; author: Peter Triesberger
+&apos; see: https://github.com/peter88213/yW2OO
+&apos; license: The MIT License (https://opensource.org/licenses/mit-license.php)
+&apos; copyright: (c) 2018, Peter Triesberger
+&apos; version: v1.0.0
+&apos;
+&apos; * Konvertiert Minuten- und Sekundenzeichen in Chevrons
+&apos; * Konvertiert Chevrons in deutsche Anführungszeichen und umgekehrt.
+
+
+sub SmartQuote
+
+&apos; ----------------------------------------------------------------------
+&apos; Tastatur-&quot;Anführungszeichen&quot; durch Chevrons ersetzen
+&apos; ----------------------------------------------------------------------
+
+dim document   as object
+dim dispatcher as object
+
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+&apos; ----------------------------------------------------------------------
+&apos; Sekundenzeichen durch Chevrons ersetzen
+&apos; ----------------------------------------------------------------------
+dim args1(18) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;SearchItem.StyleFamily&quot;
+args1(0).Value = 2
+args1(1).Name = &quot;SearchItem.CellType&quot;
+args1(1).Value = 0
+args1(2).Name = &quot;SearchItem.RowDirection&quot;
+args1(2).Value = true
+args1(3).Name = &quot;SearchItem.AllTables&quot;
+args1(3).Value = false
+args1(4).Name = &quot;SearchItem.Backward&quot;
+args1(4).Value = false
+args1(5).Name = &quot;SearchItem.Pattern&quot;
+args1(5).Value = false
+args1(6).Name = &quot;SearchItem.Content&quot;
+args1(6).Value = false
+args1(7).Name = &quot;SearchItem.AsianOptions&quot;
+args1(7).Value = false
+args1(8).Name = &quot;SearchItem.AlgorithmType&quot;
+args1(8).Value = 1
+args1(9).Name = &quot;SearchItem.SearchFlags&quot;
+args1(9).Value = 65536
+args1(10).Name = &quot;SearchItem.SearchString&quot;
+args1(10).Value = &quot;(\&apos;\&lt;)([^\&apos;]*[\.\?!,]?)(\&apos;)&quot;
+args1(11).Name = &quot;SearchItem.ReplaceString&quot;
+args1(11).Value = &quot;›$2‹&quot;
+args1(12).Name = &quot;SearchItem.Locale&quot;
+args1(12).Value = 255
+args1(13).Name = &quot;SearchItem.ChangedChars&quot;
+args1(13).Value = 2
+args1(14).Name = &quot;SearchItem.DeletedChars&quot;
+args1(14).Value = 2
+args1(15).Name = &quot;SearchItem.InsertedChars&quot;
+args1(15).Value = 2
+args1(16).Name = &quot;SearchItem.TransliterateFlags&quot;
+args1(16).Value = 1280
+args1(17).Name = &quot;SearchItem.Command&quot;
+args1(17).Value = 3
+args1(18).Name = &quot;Quiet&quot;
+args1(18).Value = true
+
+dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args1())
+
+&apos; ----------------------------------------------------------------------
+&apos; Sekundenzeichen durch Chevrons ersetzen
+&apos; ----------------------------------------------------------------------
+dim args2(18) as new com.sun.star.beans.PropertyValue
+args2(0).Name = &quot;SearchItem.StyleFamily&quot;
+args2(0).Value = 2
+args2(1).Name = &quot;SearchItem.CellType&quot;
+args2(1).Value = 0
+args2(2).Name = &quot;SearchItem.RowDirection&quot;
+args2(2).Value = true
+args2(3).Name = &quot;SearchItem.AllTables&quot;
+args2(3).Value = false
+args2(4).Name = &quot;SearchItem.Backward&quot;
+args2(4).Value = false
+args2(5).Name = &quot;SearchItem.Pattern&quot;
+args2(5).Value = false
+args2(6).Name = &quot;SearchItem.Content&quot;
+args2(6).Value = false
+args2(7).Name = &quot;SearchItem.AsianOptions&quot;
+args2(7).Value = false
+args2(8).Name = &quot;SearchItem.AlgorithmType&quot;
+args2(8).Value = 1
+args2(9).Name = &quot;SearchItem.SearchFlags&quot;
+args2(9).Value = 65536
+args2(10).Name = &quot;SearchItem.SearchString&quot;
+args2(10).Value = &quot;(\&quot;+CHR$(34)+&quot;\&lt;)([^\&quot;+CHR$(34)+&quot;]*[\.\?!,]?)(\&quot;+CHR$(34)+&quot;)&quot;
+args2(11).Name = &quot;SearchItem.ReplaceString&quot;
+args2(11).Value = &quot;»$2«&quot;
+args2(12).Name = &quot;SearchItem.Locale&quot;
+args2(12).Value = 255
+args2(13).Name = &quot;SearchItem.ChangedChars&quot;
+args2(13).Value = 2
+args2(14).Name = &quot;SearchItem.DeletedChars&quot;
+args2(14).Value = 2
+args2(15).Name = &quot;SearchItem.InsertedChars&quot;
+args2(15).Value = 2
+args2(16).Name = &quot;SearchItem.TransliterateFlags&quot;
+args2(16).Value = 1280
+args2(17).Name = &quot;SearchItem.Command&quot;
+args2(17).Value = 3
+args2(18).Name = &quot;Quiet&quot;
+args2(18).Value = true
+
+dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args2())
+
+
+end sub
+
+
+
+
+Sub Chevrons
+&apos; ----------------------------------------------------------------------
+&apos; Deutsche Anführungszeichen in Chevrons umwandeln
+&apos; ----------------------------------------------------------------------
+
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+Dim alt(3) As String
+Dim neu(3) As String
+
+alt() =Array(&quot;„&quot;,&quot;“&quot;,&quot;‚&quot;,&quot;‘&quot;)
+neu() =Array(&quot;»&quot;,&quot;«&quot;,&quot;›&quot;,&quot;‹&quot;)
+
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
+
+For I = 0 to 3
+	Replace.SearchString = alt(I)
+	Replace.ReplaceString = neu(I)
+	Doc.replaceAll(Replace)
+Next I
+
+End Sub
+
+
+
+Sub Anfuehrungszeichen
+&apos; ----------------------------------------------------------------------
+&apos; Chevrons in deutsche Anführungszeichen umwandeln
+&apos; ----------------------------------------------------------------------
+
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+Dim alt(3) As String
+Dim neu(3) As String
+
+alt() =Array(&quot;»&quot;,&quot;«&quot;,&quot;›&quot;,&quot;‹&quot;)
+neu() =Array(&quot;„&quot;,&quot;“&quot;,&quot;‚&quot;,&quot;‘&quot;)
+
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
+
+For I = 0 to 3
+	Replace.SearchString = alt(I)
+	Replace.ReplaceString = neu(I)
+	Doc.replaceAll(Replace)
+Next I
+
+End Sub
+
+
+&apos; Wörtliche Rede hervorheben
+&apos; 
+&apos; summary: Emphasize direct speech.
+&apos; author: Peter Triesberger
+&apos; see: https://github.com/peter88213/yW2OO
+&apos; license: The MIT License (https://opensource.org/licenses/mit-license.php)
+&apos; copyright: (c) 2018, Peter Triesberger
+&apos; version: v1.0.0
+
+
+sub Woertliche_Rede
+
+&apos; Jeglicher Text, der nicht von Chevrons eingeschlossen ist, wird hellgrau gemacht.
+
+&apos; colorize non-direct speech light gray.
+&apos; Direct speech means text within Chevrons (french quotes).
+
+rem ----------------------------------------------------------------------
+rem define variables
+
+dim document   as object
+dim dispatcher as object
+dim oSaveCursor as object
+dim oViewCursor as object
+
+rem ----------------------------------------------------------------------
+rem define constants
+
+Black = 00000000
+Gray = 13421772
+QuotedTextPattern = &quot;»[^»]+«&quot;
+
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+rem save cursor position
+
+oViewCursor = ThisComponent.CurrentController().getViewCursor()
+oSaveCursor = ThisComponent.Text.createTextCursorByRange(oViewCursor)
+
+rem ----------------------------------------------------------------------
+rem select whole text
+
+dispatcher.executeDispatch(document, &quot;.uno:SelectAll&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+rem set whole text to gray
+
+dim args2(0) as new com.sun.star.beans.PropertyValue
+args2(0).Name = &quot;Color&quot;
+args2(0).Value = Gray
+
+dispatcher.executeDispatch(document, &quot;.uno:Color&quot;, &quot;&quot;, 0, args2())
+
+rem ----------------------------------------------------------------------
+rem mark all text within quotes
+
+dim args3(18) as new com.sun.star.beans.PropertyValue
+args3(0).Name = &quot;SearchItem.StyleFamily&quot;
+args3(0).Value = 2
+args3(1).Name = &quot;SearchItem.CellType&quot;
+args3(1).Value = 0
+args3(2).Name = &quot;SearchItem.RowDirection&quot;
+args3(2).Value = true
+args3(3).Name = &quot;SearchItem.AllTables&quot;
+args3(3).Value = false
+args3(4).Name = &quot;SearchItem.Backward&quot;
+args3(4).Value = false
+args3(5).Name = &quot;SearchItem.Pattern&quot;
+args3(5).Value = false
+args3(6).Name = &quot;SearchItem.Content&quot;
+args3(6).Value = false
+args3(7).Name = &quot;SearchItem.AsianOptions&quot;
+args3(7).Value = false
+args3(8).Name = &quot;SearchItem.AlgorithmType&quot;
+args3(8).Value = 1
+args3(9).Name = &quot;SearchItem.SearchFlags&quot;
+args3(9).Value = 65536
+args3(10).Name = &quot;SearchItem.SearchString&quot;
+args3(10).Value = QuotedTextPattern
+args3(11).Name = &quot;SearchItem.ReplaceString&quot;
+args3(11).Value = &quot;&quot;
+args3(12).Name = &quot;SearchItem.Locale&quot;
+args3(12).Value = 255
+args3(13).Name = &quot;SearchItem.ChangedChars&quot;
+args3(13).Value = 2
+args3(14).Name = &quot;SearchItem.DeletedChars&quot;
+args3(14).Value = 2
+args3(15).Name = &quot;SearchItem.InsertedChars&quot;
+args3(15).Value = 2
+args3(16).Name = &quot;SearchItem.TransliterateFlags&quot;
+args3(16).Value = 1280
+args3(17).Name = &quot;SearchItem.Command&quot;
+args3(17).Value = 1
+args3(18).Name = &quot;Quiet&quot;
+args3(18).Value = true
+
+dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args3())
+
+rem ----------------------------------------------------------------------
+rem set color of text in quotes to black
+
+dim args4(0) as new com.sun.star.beans.PropertyValue
+args4(0).Name = &quot;Color&quot;
+args4(0).Value = Black
+
+dispatcher.executeDispatch(document, &quot;.uno:Color&quot;, &quot;&quot;, 0, args4())
+
+rem ----------------------------------------------------------------------
+rem restore cursor position
+
+oViewCursor.gotoRange(oSaveCursor,False)
+
+end sub
+
+
+sub Normalansicht
+
+&apos; Den gesamten Text auf die Grundfarbe zurücksetzen.
+
+&apos; Set all text to default color
+
+rem ----------------------------------------------------------------------
+rem define variables
+
+dim document   as object
+dim dispatcher as object
+dim oSaveCursor as object
+dim oViewCursor as object
+
+rem ----------------------------------------------------------------------
+rem define constants
+
+DefaultColor = -1
+
+rem ----------------------------------------------------------------------
+rem get access to the document
+
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+rem save cursor position
+
+oViewCursor = ThisComponent.CurrentController().getViewCursor()
+oSaveCursor = ThisComponent.Text.createTextCursorByRange(oViewCursor)
+
+rem ----------------------------------------------------------------------
+rem select whole text
+
+dispatcher.executeDispatch(document, &quot;.uno:SelectAll&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+rem set text color to default (should delete hard formatting)
+
+dim args2(0) as new com.sun.star.beans.PropertyValue
+args2(0).Name = &quot;Color&quot;
+args2(0).Value = DefaultColor
+
+dispatcher.executeDispatch(document, &quot;.uno:Color&quot;, &quot;&quot;, 0, args2())
+
+rem ----------------------------------------------------------------------
+rem restore cursor position
+
+oViewCursor.gotoRange(oSaveCursor,False)
+
+end sub
+
+</script:module>
