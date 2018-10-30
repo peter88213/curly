@@ -2,127 +2,32 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Revert" script:language="StarBasic">REM  *****  BASIC  *****
 
-&apos; Convert typographic Characters back into keyboard characters
-&apos; 
-&apos; summary: Converts typographically correct characters into keyboard characters.
-&apos; author: Peter Triesberger
-&apos; see: https://github.com/peter88213/yW2OO
-&apos; license: The MIT License (https://opensource.org/licenses/mit-license.php)
-&apos; copyright: (c) 2018, Peter Triesberger
-&apos; version: v1.1.0
-&apos;
-&apos; Replacements
-&apos; ------------
-&apos; Apostrophe: ’ --&gt; #
-&apos; Ellipsis: … --&gt; ...
-&apos; En_dash: – --&gt; --
-&apos; Prime: ‚‘’›‹ --&gt; &apos;; „“”»« --&gt; &quot;
-
-
-
-Sub Main
-Ellipsis
-Apostrophe
-En_dash
-Prime
-End Sub
-
 
 sub Prime
 &apos; ----------------------------------------------------------------------
 &apos; Convert all-type quotation marks into primes
 &apos; ----------------------------------------------------------------------
-dim document   as object
-dim dispatcher as object
 
-document   = ThisComponent.CurrentController.Frame
-dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+Dim OldStr(1) As String
+Dim NewStr(1) As String
 
-dim args1(18) as new com.sun.star.beans.PropertyValue
-args1(0).Name = &quot;SearchItem.StyleFamily&quot;
-args1(0).Value = 2
-args1(1).Name = &quot;SearchItem.CellType&quot;
-args1(1).Value = 0
-args1(2).Name = &quot;SearchItem.RowDirection&quot;
-args1(2).Value = true
-args1(3).Name = &quot;SearchItem.AllTables&quot;
-args1(3).Value = false
-args1(4).Name = &quot;SearchItem.Backward&quot;
-args1(4).Value = false
-args1(5).Name = &quot;SearchItem.Pattern&quot;
-args1(5).Value = false
-args1(6).Name = &quot;SearchItem.Content&quot;
-args1(6).Value = false
-args1(7).Name = &quot;SearchItem.AsianOptions&quot;
-args1(7).Value = false
-args1(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args1(8).Value = 1
-args1(9).Name = &quot;SearchItem.SearchFlags&quot;
-args1(9).Value = 65536
-args1(10).Name = &quot;SearchItem.SearchString&quot;
-args1(10).Value = &quot;[‚‘’›‹]&quot;
-args1(11).Name = &quot;SearchItem.ReplaceString&quot;
-args1(11).Value = &quot;&apos;&quot;
-args1(12).Name = &quot;SearchItem.Locale&quot;
-args1(12).Value = 255
-args1(13).Name = &quot;SearchItem.ChangedChars&quot;
-args1(13).Value = 2
-args1(14).Name = &quot;SearchItem.DeletedChars&quot;
-args1(14).Value = 2
-args1(15).Name = &quot;SearchItem.InsertedChars&quot;
-args1(15).Value = 2
-args1(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args1(16).Value = 1280
-args1(17).Name = &quot;SearchItem.Command&quot;
-args1(17).Value = 3
-args1(18).Name = &quot;Quiet&quot;
-args1(18).Value = true
+OldStr() =Array(&quot;[‚‘’›‹]&quot;,&quot;[„“”»«]&quot;)
+NewStr() =Array(&quot;&apos;&quot;, CHR$(34))
 
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args1())
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
+Replace.SearchRegularExpression = True
 
-dim args2(18) as new com.sun.star.beans.PropertyValue
-args2(0).Name = &quot;SearchItem.StyleFamily&quot;
-args2(0).Value = 2
-args2(1).Name = &quot;SearchItem.CellType&quot;
-args2(1).Value = 0
-args2(2).Name = &quot;SearchItem.RowDirection&quot;
-args2(2).Value = true
-args2(3).Name = &quot;SearchItem.AllTables&quot;
-args2(3).Value = false
-args2(4).Name = &quot;SearchItem.Backward&quot;
-args2(4).Value = false
-args2(5).Name = &quot;SearchItem.Pattern&quot;
-args2(5).Value = false
-args2(6).Name = &quot;SearchItem.Content&quot;
-args2(6).Value = false
-args2(7).Name = &quot;SearchItem.AsianOptions&quot;
-args2(7).Value = false
-args2(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args2(8).Value = 1
-args2(9).Name = &quot;SearchItem.SearchFlags&quot;
-args2(9).Value = 65536
-args2(10).Name = &quot;SearchItem.SearchString&quot;
-args2(10).Value = &quot;[„“”»«]&quot;
-args2(11).Name = &quot;SearchItem.ReplaceString&quot;
-args2(11).Value = CHR$(34)
-args2(12).Name = &quot;SearchItem.Locale&quot;
-args2(12).Value = 255
-args2(13).Name = &quot;SearchItem.ChangedChars&quot;
-args2(13).Value = 2
-args2(14).Name = &quot;SearchItem.DeletedChars&quot;
-args2(14).Value = 2
-args2(15).Name = &quot;SearchItem.InsertedChars&quot;
-args2(15).Value = 2
-args2(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args2(16).Value = 1280
-args2(17).Name = &quot;SearchItem.Command&quot;
-args2(17).Value = 3
-args2(18).Name = &quot;Quiet&quot;
-args2(18).Value = true
+For I = 0 to 1
+	Replace.SearchString = OldStr(I)
+	Replace.ReplaceString = NewStr(I)
+	Doc.replaceAll(Replace)
+Next I
 
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args2())
-
-end sub
+End Sub
 
 
 
@@ -134,18 +39,18 @@ Sub Apostrophe
 Dim I As Long
 Dim Doc As Object
 Dim Replace As Object
-Dim alt(0) As String
-Dim neu(0) As String
+Dim OldStr(0) As String
+Dim NewStr(0) As String
 
-alt() =Array(&quot;’&quot;)
-neu() =Array(&quot;#&quot;)
+OldStr() =Array(&quot;’&quot;)
+NewStr() =Array(&quot;#&quot;)
 
 Doc = StarDesktop.CurrentComponent
 Replace = Doc.createReplaceDescriptor
 
 For I = 0 to 0
-	Replace.SearchString = alt(I)
-	Replace.ReplaceString = neu(I)
+	Replace.SearchString = OldStr(I)
+	Replace.ReplaceString = NewStr(I)
 	Doc.replaceAll(Replace)
 Next I
 
@@ -161,18 +66,18 @@ Sub Ellipsis
 Dim I As Long
 Dim Doc As Object
 Dim Replace As Object
-Dim alt(0) As String
-Dim neu(0) As String
+Dim OldStr(0) As String
+Dim NewStr(0) As String
 
-alt() =Array(&quot;…&quot;)
-neu() =Array(&quot;...&quot;)
+OldStr() =Array(&quot;…&quot;)
+NewStr() =Array(&quot;...&quot;)
 
 Doc = StarDesktop.CurrentComponent
 Replace = Doc.createReplaceDescriptor
 
 For I = 0 to 0
-	Replace.SearchString = alt(I)
-	Replace.ReplaceString = neu(I)
+	Replace.SearchString = OldStr(I)
+	Replace.ReplaceString = NewStr(I)
 	Doc.replaceAll(Replace)
 Next I
 
@@ -184,55 +89,58 @@ sub En_dash
 &apos; ----------------------------------------------------------------------
 &apos; Convert en-dashes into double hyphens
 &apos; ----------------------------------------------------------------------
-dim document   as object
-dim dispatcher as object
 
-rem get access to the document
-document   = ThisComponent.CurrentController.Frame
-dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+Dim OldStr(0) As String
+Dim NewStr(0) As String
 
-dim args1(18) as new com.sun.star.beans.PropertyValue
-args1(0).Name = &quot;SearchItem.StyleFamily&quot;
-args1(0).Value = 2
-args1(1).Name = &quot;SearchItem.CellType&quot;
-args1(1).Value = 0
-args1(2).Name = &quot;SearchItem.RowDirection&quot;
-args1(2).Value = true
-args1(3).Name = &quot;SearchItem.AllTables&quot;
-args1(3).Value = false
-args1(4).Name = &quot;SearchItem.Backward&quot;
-args1(4).Value = false
-args1(5).Name = &quot;SearchItem.Pattern&quot;
-args1(5).Value = false
-args1(6).Name = &quot;SearchItem.Content&quot;
-args1(6).Value = false
-args1(7).Name = &quot;SearchItem.AsianOptions&quot;
-args1(7).Value = false
-args1(8).Name = &quot;SearchItem.AlgorithmType&quot;
-args1(8).Value = 0
-args1(9).Name = &quot;SearchItem.SearchFlags&quot;
-args1(9).Value = 65536
-args1(10).Name = &quot;SearchItem.SearchString&quot;
-args1(10).Value = &quot;–&quot;
-args1(11).Name = &quot;SearchItem.ReplaceString&quot;
-args1(11).Value = &quot;--&quot;
-args1(12).Name = &quot;SearchItem.Locale&quot;
-args1(12).Value = 255
-args1(13).Name = &quot;SearchItem.ChangedChars&quot;
-args1(13).Value = 2
-args1(14).Name = &quot;SearchItem.DeletedChars&quot;
-args1(14).Value = 2
-args1(15).Name = &quot;SearchItem.InsertedChars&quot;
-args1(15).Value = 2
-args1(16).Name = &quot;SearchItem.TransliterateFlags&quot;
-args1(16).Value = 1280
-args1(17).Name = &quot;SearchItem.Command&quot;
-args1(17).Value = 3
-args1(18).Name = &quot;Quiet&quot;
-args1(18).Value = true
+OldStr() =Array(&quot;–&quot;)
+NewStr() =Array(&quot;--&quot;)
 
-dispatcher.executeDispatch(document, &quot;.uno:ExecuteSearch&quot;, &quot;&quot;, 0, args1())
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
 
-end sub
+For I = 0 to 0
+	Replace.SearchString = OldStr(I)
+	Replace.ReplaceString = NewStr(I)
+	Doc.replaceAll(Replace)
+Next I
+
+UnprotectQM
+
+End Sub
+
+
+
+Sub UnprotectQM
+&apos; ----------------------------------------------------------------------
+&apos; Put breakable blanks at dashes and ellipses
+&apos; leading or terminating direct speech
+&apos; ----------------------------------------------------------------------
+
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+Dim OldStr(3) As String
+Dim NewStr(3) As String
+
+OldStr() =Array(Chr(160)+&quot;--&quot;+CHR$(34),CHR$(34)+&quot;--&quot;+Chr(160),Chr(160)+&quot;...&quot;+CHR$(34),CHR$(34)+&quot;...&quot;+Chr(160))
+NewStr() =Array(&quot; --&quot;+CHR$(34),CHR$(34)+&quot;-- &quot;,&quot; ...&quot;+CHR$(34),CHR$(34)+&quot;... &quot;)
+
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
+
+For I = 0 to 3
+	Replace.SearchString = OldStr(I)
+	Replace.ReplaceString = NewStr(I)
+	Doc.replaceAll(Replace)
+Next I
+
+End Sub
+
+
+
 
 </script:module>

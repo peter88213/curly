@@ -2,57 +2,22 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="RTFedit" script:language="StarBasic">REM  *****  BASIC  *****
 
-sub FormatScene
+sub Format
+&apos; ----------------------------------------------------------------------
+&apos; Load Template compatible with yWriter settings
+&apos; ----------------------------------------------------------------------
 
-&apos; Aus yWriter heraus aufgerufene Szene formatieren
-&apos; Erster Absatz: Textkörper, alle anderen Textkörper Einzug
-&apos; Formatvorlagen aus &quot;yWriter-Arbeitsvorlage.ott&quot;
-
-
-rem ----------------------------------------------------------------------
-rem define variables
-dim document   as object
-dim dispatcher as object
-rem ----------------------------------------------------------------------
-rem get access to the document
-document   = ThisComponent.CurrentController.Frame
-dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-
-rem ----------------------------------------------------------------------
-dispatcher.executeDispatch(document, &quot;.uno:SelectAll&quot;, &quot;&quot;, 0, Array())
-
-rem ----------------------------------------------------------------------
-dim args2(1) as new com.sun.star.beans.PropertyValue
-args2(0).Name = &quot;Template&quot;
-args2(0).Value = &quot;Textkörper Einzug&quot;
-args2(1).Name = &quot;Family&quot;
-args2(1).Value = 2
-
-dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args2())
-
-rem ----------------------------------------------------------------------
-dispatcher.executeDispatch(document, &quot;.uno:GoToStartOfDoc&quot;, &quot;&quot;, 0, Array())
-
-rem ----------------------------------------------------------------------
-dim args4(1) as new com.sun.star.beans.PropertyValue
-args4(0).Name = &quot;Template&quot;
-args4(0).Value = &quot;Textkörper&quot;
-args4(1).Name = &quot;Family&quot;
-args4(1).Value = 2
-
-dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args4())
-
-rem ----------------------------------------------------------------------
-rem Set Template
 		path=createunoservice(&quot;com.sun.star.util.PathSettings&quot;)
 		match = InStr(path.UserConfig,&quot;/config&quot;)
 		TemplatePath = Left(path.UserConfig,match)+&quot;template/yWriter.ott&quot;
-		rem Msgbox TemplatePath
+
         dim args(0) as new com.sun.star.beans.PropertyValue
+
         sTemplateName = &quot;yWriter.ott&quot;
         sURL = TemplatePath
         args(0).Name = &quot;OverwriteStyles&quot;
         args(0).Value = True
+
         ThisComponent.stylefamilies.loadStylesFromURL( sURL, args() )
 
 end sub
