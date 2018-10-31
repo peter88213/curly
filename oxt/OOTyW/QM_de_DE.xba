@@ -10,6 +10,7 @@ sub Main
 
 SmartQuote
 Common.Main
+ProtectQM
 
 end sub
 
@@ -60,6 +61,30 @@ sub StandardView
 Common.StandardView
 
 end sub
+
+
+
+Sub ProtectQM
+&apos; ----------------------------------------------------------------------
+&apos; Silbentrennung vor und nach Anführungszeichen verhindern
+&apos; ----------------------------------------------------------------------
+
+Common.ProtectQM(&quot;»&quot;,&quot;«&quot;)
+Common.ProtectQM(&quot;„&quot;,&quot;“&quot;)
+
+End Sub
+
+
+
+Sub UnprotectQM
+&apos; ----------------------------------------------------------------------
+&apos; Nichttrennbare Leerzeichen um Ellipsen und Gedankenstriche entfernen
+&apos; ----------------------------------------------------------------------
+
+Common.UnprotectQM(&quot;»&quot;,&quot;«&quot;)
+Common.UnprotectQM(&quot;„&quot;,&quot;“&quot;)
+
+End Sub
 
 
 

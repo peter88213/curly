@@ -67,8 +67,6 @@ ANewStr() = Array(&quot;--&quot;)
 
 common.sar(AOldStr,ANewStr,False)
 
-UnprotectQM
-
 End Sub
 
 

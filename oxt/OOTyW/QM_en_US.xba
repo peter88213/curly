@@ -10,6 +10,7 @@ sub Main
 
 SmartQuote
 Common.Main
+ProtectQM
 
 end sub
 
@@ -40,12 +41,34 @@ End Sub
 
 
 
+Sub ProtectQM
+&apos; ----------------------------------------------------------------------
+&apos; Prevent hyphenation around quotation marks
+&apos; ----------------------------------------------------------------------
+
+Common.ProtectQM(&quot;“&quot;,&quot;”&quot;)
+
+End Sub
+
+
+
+Sub UnprotectQM
+&apos; ----------------------------------------------------------------------
+&apos; Allow hyphenation around quotation marks
+&apos; ----------------------------------------------------------------------
+
+Common.UnprotectQM(&quot;“&quot;,&quot;”&quot;)
+
+End Sub
+
+
 sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
 &apos; De-emphasize all but direct speech 
 &apos; ----------------------------------------------------------------------
 
 Common.ShowDirectSpeech(&quot;“[^“]+”&quot;)
+
 end sub
 
 

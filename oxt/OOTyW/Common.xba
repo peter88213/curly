@@ -62,29 +62,13 @@ ANewStr() = Array(&quot;–&quot;)
 
 sar(AOldStr,ANewStr,False)
 
-ProtectQM
-
 End Sub
 
 
 
-Sub ProtectQM
+Sub ProtectQM(ChOpen,ChClose)
 &apos; ----------------------------------------------------------------------
 &apos; Prevent hyphenation around quotation marks
-&apos; ----------------------------------------------------------------------
-
-Interruption(CHR$(34),CHR$(34))
-Interruption(&quot;»&quot;,&quot;«&quot;)
-Interruption(&quot;«&quot;,&quot;»&quot;)
-Interruption( &quot;“&quot;,&quot;”&quot;)
-Interruption(&quot;„&quot;,&quot;“&quot;)
-
-End Sub
-
-
-
-Sub Interruption(ChOpen,ChClose)
-&apos; ----------------------------------------------------------------------
 &apos; Put non-breakable blanks at dashes and ellipses
 &apos; leading or terminating direct speech
 &apos; ----------------------------------------------------------------------
@@ -96,6 +80,24 @@ AOldStr() = Array(&quot; –&quot;+ChClose,ChOpen+&quot;– &quot;,&quot; …&qu
 ANewStr() = Array(Chr(160)+&quot;–&quot;+ChClose,ChOpen+&quot;–&quot;+Chr(160),Chr(160)+&quot;…&quot;+ChClose,ChOpen+&quot;…&quot;+Chr(160))
 
 sar(AOldStr,ANewStr,False)
+
+End Sub
+
+
+
+Sub UnprotectQM(ChOpen,ChClose)
+&apos; ----------------------------------------------------------------------
+&apos; Put breakable blanks at dashes and ellipses
+&apos; leading or terminating direct speech
+&apos; ----------------------------------------------------------------------
+
+Dim AOldStr(5) As String
+Dim ANewStr(5) As String
+
+AOldStr() = Array(Chr(160)+&quot;–&quot;+ChClose,ChOpen+&quot;–&quot;+Chr(160),Chr(160)+&quot;…&quot;+ChClose,ChOpen+&quot;…&quot;+Chr(160),Chr(160)+&quot;--&quot;+ChClose,ChOpen+&quot;--&quot;+Chr(160))
+AnewStr() = Array(&quot; –&quot;+ChClose,ChOpen+&quot;– &quot;,&quot; …&quot;+ChClose,ChOpen+&quot;… &quot;,&quot; --&quot;+ChClose,ChOpen+&quot;-- &quot;)
+
+common.sar(AOldStr,ANewStr,False)
 
 End Sub
 
