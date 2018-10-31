@@ -8,24 +8,13 @@ sub Prime
 &apos; Convert all-type quotation marks into primes
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(1) As String
-Dim NewStr(1) As String
+Dim AOldStr(1) As String
+Dim ANewStr(1) As String
 
-OldStr() =Array(&quot;[‚‘’›‹]&quot;,&quot;[„“”»«]&quot;)
-NewStr() =Array(&quot;&apos;&quot;, CHR$(34))
+AOldStr() = Array(&quot;[‚‘’›‹]&quot;,&quot;[„“”»«]&quot;)
+ANewStr() = Array(&quot;&apos;&quot;, CHR$(34))
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-Replace.SearchRegularExpression = True
-
-For I = 0 to 1
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+common.sar(AOldStr,ANewStr,True)
 
 End Sub
 
@@ -36,23 +25,13 @@ Sub Apostrophe
 &apos; Convert apostrophes into number signs
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(0) As String
-Dim NewStr(0) As String
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
 
-OldStr() =Array(&quot;’&quot;)
-NewStr() =Array(&quot;#&quot;)
+AOldStr() = Array(&quot;’&quot;)
+ANewStr() = Array(&quot;#&quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 0
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+common.sar(AOldStr,ANewStr,False)
 
 End Sub
 
@@ -63,23 +42,13 @@ Sub Ellipsis
 &apos; Convert ellipsis into three periods
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(0) As String
-Dim NewStr(0) As String
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
 
-OldStr() =Array(&quot;…&quot;)
-NewStr() =Array(&quot;...&quot;)
+AOldStr() = Array(&quot;…&quot;)
+ANewStr() = Array(&quot;...&quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 0
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+common.sar(AOldStr,ANewStr,False)
 
 End Sub
 
@@ -90,23 +59,13 @@ sub En_dash
 &apos; Convert en-dashes into double hyphens
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(0) As String
-Dim NewStr(0) As String
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
 
-OldStr() =Array(&quot;–&quot;)
-NewStr() =Array(&quot;--&quot;)
+AOldStr() = Array(&quot;–&quot;)
+ANewStr() = Array(&quot;--&quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 0
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+common.sar(AOldStr,ANewStr,False)
 
 UnprotectQM
 
@@ -120,23 +79,13 @@ Sub UnprotectQM
 &apos; leading or terminating direct speech
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(3) As String
-Dim NewStr(3) As String
+Dim AOldStr(3) As String
+Dim ANewStr(3) As String
 
-OldStr() =Array(Chr(160)+&quot;--&quot;+CHR$(34),CHR$(34)+&quot;--&quot;+Chr(160),Chr(160)+&quot;...&quot;+CHR$(34),CHR$(34)+&quot;...&quot;+Chr(160))
-NewStr() =Array(&quot; --&quot;+CHR$(34),CHR$(34)+&quot;-- &quot;,&quot; ...&quot;+CHR$(34),CHR$(34)+&quot;... &quot;)
+AOldStr() = Array(Chr(160)+&quot;--&quot;+CHR$(34),CHR$(34)+&quot;--&quot;+Chr(160),Chr(160)+&quot;...&quot;+CHR$(34),CHR$(34)+&quot;...&quot;+Chr(160))
+ANewStr() = Array(&quot; --&quot;+CHR$(34),CHR$(34)+&quot;-- &quot;,&quot; ...&quot;+CHR$(34),CHR$(34)+&quot;... &quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 3
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+common.sar(AOldStr,ANewStr,False)
 
 End Sub
 

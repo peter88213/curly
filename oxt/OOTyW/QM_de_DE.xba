@@ -68,23 +68,13 @@ Sub Chevrons
 &apos; Deutsche Anführungszeichen in Chevrons umwandeln
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(3) As String
-Dim NewStr(3) As String
+Dim AOldStr(3) As String
+Dim ANewStr(3) As String
 
-OldStr() =Array(&quot;„&quot;,&quot;“&quot;,&quot;‚&quot;,&quot;‘&quot;)
-NewStr() =Array(&quot;»&quot;,&quot;«&quot;,&quot;›&quot;,&quot;‹&quot;)
+AOldStr() = Array(&quot;„&quot;,&quot;“&quot;,&quot;‚&quot;,&quot;‘&quot;)
+ANewStr() = Array(&quot;»&quot;,&quot;«&quot;,&quot;›&quot;,&quot;‹&quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 3
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+common.sar(AOldStr,ANewStr,False)
 
 End Sub
 
@@ -95,23 +85,13 @@ Sub Anfuehrungszeichen
 &apos; Chevrons in deutsche Anführungszeichen umwandeln
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(3) As String
-Dim NewStr(3) As String
+Dim AOldStr(3) As String
+Dim ANewStr(3) As String
 
-OldStr() =Array(&quot;»&quot;,&quot;«&quot;,&quot;›&quot;,&quot;‹&quot;)
-NewStr() =Array(&quot;„&quot;,&quot;“&quot;,&quot;‚&quot;,&quot;‘&quot;)
+AOldStr() = Array(&quot;»&quot;,&quot;«&quot;,&quot;›&quot;,&quot;‹&quot;)
+ANewStr() = Array(&quot;„&quot;,&quot;“&quot;,&quot;‚&quot;,&quot;‘&quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 3
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+common.sar(AOldStr,ANewStr,False)
 
 End Sub
 

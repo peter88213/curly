@@ -20,23 +20,13 @@ Sub Apostrophe
 &apos; Convert number signs into apostrophes
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(1) As String
-Dim NewStr(1) As String
+Dim AOldStr(1) As String
+Dim ANewStr(1) As String
 
-OldStr() =Array(&quot;#&quot;)
-NewStr() =Array(&quot;’&quot;)
+AOldStr() = Array(&quot;#&quot;)
+ANewStr() = Array(&quot;’&quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 0
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+sar(AOldStr,ANewStr,False)
 
 End Sub
 
@@ -47,23 +37,13 @@ Sub Ellipsis
 &apos; Convert three periods into ellipsis
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(0) As String
-Dim NewStr(0) As String
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
 
-OldStr() =Array(&quot;...&quot;)
-NewStr() =Array(&quot;…&quot;)
+AOldStr() = Array(&quot;...&quot;)
+ANewStr() = Array(&quot;…&quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 0
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+sar(AOldStr,ANewStr,False)
 
 End Sub
 
@@ -74,23 +54,13 @@ sub En_dash
 &apos; Convert double hyphens into en-dashes
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(0) As String
-Dim NewStr(0) As String
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
 
-OldStr() =Array(&quot;--&quot;)
-NewStr() =Array(&quot;–&quot;)
+AOldStr() = Array(&quot;--&quot;)
+ANewStr() = Array(&quot;–&quot;)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 0
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+sar(AOldStr,ANewStr,False)
 
 ProtectQM
 
@@ -119,23 +89,13 @@ Sub Interruption(ChOpen,ChClose)
 &apos; leading or terminating direct speech
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(3) As String
-Dim NewStr(3) As String
+Dim AOldStr(3) As String
+Dim ANewStr(3) As String
 
-OldStr() =Array(&quot; –&quot;+ChClose,ChOpen+&quot;– &quot;,&quot; …&quot;+ChClose,,ChOpen+&quot;… &quot;)
-NewStr() =Array(Chr(160)+&quot;–&quot;+ChClose,ChOpen+&quot;–&quot;+Chr(160),Chr(160)+&quot;…&quot;+ChClose,ChOpen+&quot;…&quot;+Chr(160))
+AOldStr() = Array(&quot; –&quot;+ChClose,ChOpen+&quot;– &quot;,&quot; …&quot;+ChClose,ChOpen+&quot;… &quot;)
+ANewStr() = Array(Chr(160)+&quot;–&quot;+ChClose,ChOpen+&quot;–&quot;+Chr(160),Chr(160)+&quot;…&quot;+ChClose,ChOpen+&quot;…&quot;+Chr(160))
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-
-For I = 0 to 3
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+sar(AOldStr,ANewStr,False)
 
 End Sub
 
@@ -146,24 +106,13 @@ sub SmartQuote(ChOpen1,ChClose1,ChOpen2,ChClose2)
 &apos; Replace keyboard characters by quotation marks 
 &apos; ----------------------------------------------------------------------
 
-Dim I As Long
-Dim Doc As Object
-Dim Replace As Object
-Dim OldStr(1) As String
-Dim NewStr(1) As String
+Dim AOldStr(1) As String
+Dim ANewStr(1) As String
 
-OldStr() =Array(&quot;(\&apos;\&lt;)([^\&apos;]*[\.\?!,]?)(\&apos;)&quot;,&quot;(\&quot;+CHR$(34)+&quot;\&lt;)([^\&quot;+CHR$(34)+&quot;]*[\.\?!,]?)(\&quot;+CHR$(34)+&quot;)&quot;)
-NewStr() =Array(ChOpen1+&quot;$2&quot;+ChClose1, ChOpen2+&quot;$2&quot;+ChClose2)
+AOldStr() = Array(&quot;(\&apos;\&lt;)([^\&apos;]*[\.\?!,]?)(\&apos;)&quot;,&quot;(\&quot;+CHR$(34)+&quot;\&lt;)([^\&quot;+CHR$(34)+&quot;]*[\.\?!,]?)(\&quot;+CHR$(34)+&quot;)&quot;)
+ANewStr() = Array(ChOpen1+&quot;$2&quot;+ChClose1, ChOpen2+&quot;$2&quot;+ChClose2)
 
-Doc = StarDesktop.CurrentComponent
-Replace = Doc.createReplaceDescriptor
-Replace.SearchRegularExpression = True
-
-For I = 0 to 1
-	Replace.SearchString = OldStr(I)
-	Replace.ReplaceString = NewStr(I)
-	Doc.replaceAll(Replace)
-Next I
+sar(AOldStr,ANewStr,True)
 
 End Sub
 
@@ -327,5 +276,26 @@ oViewCursor.gotoRange(oSaveCursor,False)
 end sub
 
 
+
+sub sar(AOldStr,ANewStr,regex)
+&apos; ----------------------------------------------------------------------
+&apos; Search and replace array of strings
+&apos; ----------------------------------------------------------------------
+
+Dim I As Long
+Dim Doc As Object
+Dim Replace As Object
+
+Doc = StarDesktop.CurrentComponent
+Replace = Doc.createReplaceDescriptor
+Replace.SearchRegularExpression = regex
+
+For I = 0 to UBound(AOldStr)
+	Replace.setSearchString(AOldStr(I))
+	Replace.setReplaceString(ANewStr(I))
+	Doc.replaceAll(Replace)
+Next I
+
+End Sub
 
 </script:module>
