@@ -16,7 +16,7 @@ REM postcondition: The template remains, if user wants it.
 REM 
 REM since: 2018-10-31
 
-set _release=0.2.2
+set _release=1.0.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
@@ -30,7 +30,7 @@ set _OpenOffice3_Userprofile=AppData\Roaming\OpenOffice.org\3\user
 set _LibreOffice5_Userprofile=AppData\Roaming\LibreOffice\4\user
 
 echo -----------------------------------------------------------------
-echo yW2OO (yWriter to OpenOffice) v%_release%
+echo # OOTyW (OpenOffice typography tools for yWriter users) v%_release%
 echo Removing software package ...
 echo -----------------------------------------------------------------
 rem Detect Combination of Windows and Office 
