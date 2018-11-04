@@ -8,9 +8,9 @@ sub Main
 &apos; Replace keyboard glyphs by typographical correct glyphs
 &apos; ----------------------------------------------------------------------
 
-SmartQuote
 Common.Main
 Common.Em_dash
+SmartQuote
 ProtectQM
 
 end sub

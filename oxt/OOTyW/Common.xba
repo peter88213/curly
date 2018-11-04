@@ -19,18 +19,13 @@ Sub Apostrophe
 &apos; ----------------------------------------------------------------------
 &apos; Convert number signs into apostrophes
 &apos; ----------------------------------------------------------------------
-Dim AOldStr(0) As String
-Dim ANewStr(0) As String
+Dim AOldStr(1) As String
+Dim ANewStr(1) As String
 
-AOldStr() = Array(&quot;([:alpha:]?)&apos;([:alpha:]?)&quot;)
-ANewStr() = Array(&quot;$1#$2&quot;)
+AOldStr() = Array(&quot;([a-zäöüß])&apos;([a-zäöüß])&quot;,&quot;#&quot;)
+ANewStr() = Array(&quot;$1’$2&quot;,&quot;’&quot;)
 
 sar(AOldStr,ANewStr,True)
-
-AOldStr() = Array(&quot;#&quot;)
-ANewStr() = Array(&quot;’&quot;)
-
-sar(AOldStr,ANewStr,False)
 
 End Sub
 

@@ -8,9 +8,9 @@ sub Main
 &apos; Tastaturglyphen durch  typographisch korrekte Glyphen ersetzen
 &apos; ----------------------------------------------------------------------
 
-SmartQuote
 Common.Main
 Common.En_dash
+SmartQuote
 ProtectQM
 
 end sub

@@ -8,9 +8,9 @@ sub Main
 &apos; Replace keyboard glyphs by typographical correct glyphs
 &apos; ----------------------------------------------------------------------
 
-SmartQuote
-Common.Main
 Common.Em_dash
+Common.Main
+SmartQuote
 ProtectQM
 
 end sub
@@ -32,8 +32,15 @@ Sub TypewriterView
 &apos; ----------------------------------------------------------------------
 &apos; Keyboard glyphs only 
 &apos; ----------------------------------------------------------------------
+Dim AOldStr(2) As String
+Dim ANewStr(2) As String
 
-Revert.Prime
+AOldStr() = Array(&quot;([a-zäöüß])’([a-zäöüß])&quot;,&quot;(\“\&lt;)([^\“]*[\.\?!,]?)(\”)&quot;,&quot;(\‘\&lt;)([^\‘]*[\.\?!,]?)(\’)&quot;)
+ANewStr() = Array(&quot;$1&apos;$2&quot;,&quot;&apos;$2&apos;&quot;, CHR$(34)+&quot;$2&quot;+CHR$(34))
+
+sar(AOldStr,ANewStr,True)
+
+Revert.Apostrophe
 Revert.Ellipsis
 Revert.Em_dash
 Revert.UnprotectQM
