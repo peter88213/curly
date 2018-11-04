@@ -19,9 +19,13 @@ Sub Apostrophe
 &apos; ----------------------------------------------------------------------
 &apos; Convert number signs into apostrophes
 &apos; ----------------------------------------------------------------------
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
 
-Dim AOldStr(1) As String
-Dim ANewStr(1) As String
+AOldStr() = Array(&quot;([:alpha:]?)&apos;([:alpha:]?)&quot;)
+ANewStr() = Array(&quot;$1#$2&quot;)
+
+sar(AOldStr,ANewStr,True)
 
 AOldStr() = Array(&quot;#&quot;)
 ANewStr() = Array(&quot;’&quot;)
@@ -59,6 +63,23 @@ Dim ANewStr(0) As String
 
 AOldStr() = Array(&quot;--&quot;)
 ANewStr() = Array(&quot;–&quot;)
+
+sar(AOldStr,ANewStr,False)
+
+End Sub
+
+
+
+sub Em_dash
+&apos; ----------------------------------------------------------------------
+&apos; Convert double hyphens into em-dashes
+&apos; ----------------------------------------------------------------------
+
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
+
+AOldStr() = Array(&quot;--&quot;)
+ANewStr() = Array(&quot;—&quot;)
 
 sar(AOldStr,ANewStr,False)
 

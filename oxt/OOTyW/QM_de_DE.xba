@@ -10,6 +10,7 @@ sub Main
 
 SmartQuote
 Common.Main
+Common.En_dash
 ProtectQM
 
 end sub
@@ -96,8 +97,8 @@ Sub Chevrons
 Dim AOldStr(3) As String
 Dim ANewStr(3) As String
 
-AOldStr() = Array(&quot;„&quot;,&quot;“&quot;,&quot;‚&quot;,&quot;‘&quot;)
-ANewStr() = Array(&quot;»&quot;,&quot;«&quot;,&quot;›&quot;,&quot;‹&quot;)
+AOldStr() = Array(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+ANewStr() = Array(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
 
 common.sar(AOldStr,ANewStr,False)
 
@@ -113,8 +114,8 @@ Sub Anfuehrungszeichen
 Dim AOldStr(3) As String
 Dim ANewStr(3) As String
 
-AOldStr() = Array(&quot;»&quot;,&quot;«&quot;,&quot;›&quot;,&quot;‹&quot;)
-ANewStr() = Array(&quot;„&quot;,&quot;“&quot;,&quot;‚&quot;,&quot;‘&quot;)
+AOldStr() = Array(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+ANewStr() = Array(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
 
 common.sar(AOldStr,ANewStr,False)
 

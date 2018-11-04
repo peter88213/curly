@@ -71,6 +71,23 @@ End Sub
 
 
 
+sub Em_dash
+&apos; ----------------------------------------------------------------------
+&apos; Convert em-dashes into double hyphens
+&apos; ----------------------------------------------------------------------
+
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
+
+AOldStr() = Array(&quot;—&quot;)
+ANewStr() = Array(&quot;--&quot;)
+
+common.sar(AOldStr,ANewStr,False)
+
+End Sub
+
+
+
 Sub UnprotectQM
 &apos; ----------------------------------------------------------------------
 &apos; Put breakable blanks at dashes and ellipses

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
-<script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_en_US" script:language="StarBasic">REM  *****  BASIC  *****
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_en_GB" script:language="StarBasic">REM  *****  BASIC  *****
 
 
 sub Main
@@ -19,10 +19,10 @@ end sub
 
 sub SmartQuote
 &apos; ----------------------------------------------------------------------
-&apos; Replace primes by AE style quotation marks
+&apos; Replace primes by BE style quotation marks
 &apos; ----------------------------------------------------------------------
 
-Common.SmartQuote(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
+Common.SmartQuote(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
 
 end sub
 
@@ -47,7 +47,7 @@ Sub ProtectQM
 &apos; Prevent hyphenation around quotation marks
 &apos; ----------------------------------------------------------------------
 
-Common.ProtectQM(&quot;“&quot;,&quot;”&quot;)
+Common.ProtectQM(&quot;‘&quot;,&quot;’&quot;)
 
 End Sub
 
@@ -58,7 +58,7 @@ Sub UnprotectQM
 &apos; Allow hyphenation around quotation marks
 &apos; ----------------------------------------------------------------------
 
-Common.UnprotectQM(&quot;“&quot;,&quot;”&quot;)
+Common.UnprotectQM(&quot;‘&quot;,&quot;’&quot;)
 
 End Sub
 
@@ -68,7 +68,7 @@ sub ShowDirectSpeech
 &apos; De-emphasize all but direct speech 
 &apos; ----------------------------------------------------------------------
 
-Common.ShowDirectSpeech(&quot;“[^“]+”&quot;)
+Common.ShowDirectSpeech(&quot;‘[^‘]+’&quot;)
 
 end sub
 
@@ -82,6 +82,8 @@ sub StandardView
 Common.StandardView
 
 end sub
+
+
 
 
 
