@@ -2,7 +2,7 @@
 
 ## Features
 
-* _Smart quote_ macros.
+* _Smart quotes_ macros.
 * _Search and replace_ macros for apostrophes and dashes.
 * Revert to keyboard characters.
 * Template for OpenOffice as yWriter _external RTF editor_.
