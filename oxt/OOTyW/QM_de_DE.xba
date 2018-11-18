@@ -10,19 +10,19 @@ sub Main
 
 Common.Main
 Common.En_dash
-SmartQuote
+SmartQuotes
 ProtectQM
 
 end sub
 
 
 
-sub SmartQuote
+sub SmartQuotes
 &apos; ----------------------------------------------------------------------
 &apos; Prime durch Chevrons ersetzen
 &apos; ----------------------------------------------------------------------
 
-Common.SmartQuote(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.SmartQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
 
 end sub
 
@@ -91,7 +91,7 @@ End Sub
 
 Sub Chevrons
 &apos; ----------------------------------------------------------------------
-&apos; Deutsche Anführungszeichen in Chevrons umwandeln
+&apos; Gänsefüßchen in Chevrons umwandeln
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(3) As String
@@ -108,7 +108,7 @@ End Sub
 
 Sub Anfuehrungszeichen
 &apos; ----------------------------------------------------------------------
-&apos; Chevrons in deutsche Anführungszeichen umwandeln
+&apos; Chevrons in Gänsefüßchen umwandeln
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(3) As String

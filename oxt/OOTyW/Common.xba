@@ -119,16 +119,16 @@ End Sub
 
 
 
-sub SmartQuote(ChOpen1,ChClose1,ChOpen2,ChClose2)
+sub SmartQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 &apos; ----------------------------------------------------------------------
 &apos; Replace keyboard characters by quotation marks 
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(1) As String
-Dim ANewStr(1) As String
+Dim AOldStr(5) As String
+Dim ANewStr(5) As String
 
-AOldStr() = Array(&quot;(\&apos;\&lt;)([^\&apos;]*[\.\?!,]?)(\&apos;)&quot;,&quot;(\&quot;+CHR$(34)+&quot;\&lt;)([^\&quot;+CHR$(34)+&quot;]*[\.\?!,]?)(\&quot;+CHR$(34)+&quot;)&quot;)
-ANewStr() = Array(ChOpen1+&quot;$2&quot;+ChClose1, ChOpen2+&quot;$2&quot;+ChClose2)
+AOldStr() = Array(&quot;^\&apos;&quot;,&quot; \&apos;&quot;,&quot;\&apos;&quot;,&quot;^&quot;+CHR$(34),&quot; &quot;+CHR$(34),CHR$(34))
+ANewStr() = Array(ChOpen1,&quot; &quot;+ChOpen1,ChClose1,ChOpen2,&quot; &quot;+ChOpen2,ChClose2)
 
 sar(AOldStr,ANewStr,True)
 

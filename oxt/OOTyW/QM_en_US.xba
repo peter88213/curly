@@ -10,19 +10,19 @@ sub Main
 
 Common.Main
 Common.Em_dash
-SmartQuote
+SmartQuotes
 ProtectQM
 
 end sub
 
 
 
-sub SmartQuote
+sub SmartQuotes
 &apos; ----------------------------------------------------------------------
 &apos; Replace primes by AE style quotation marks
 &apos; ----------------------------------------------------------------------
 
-Common.SmartQuote(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
+Common.SmartQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
 
 end sub
 
