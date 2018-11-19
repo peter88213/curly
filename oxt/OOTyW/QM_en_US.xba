@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_en_US" script:language="StarBasic">REM  *****  BASIC  *****
+&apos; ----------------------------------------------------------------------
+&apos; Do conversions according to AE conventions.
+&apos; ----------------------------------------------------------------------
+
 
 
 sub Main
 &apos; ----------------------------------------------------------------------
-&apos; Replace keyboard glyphs by typographical correct glyphs
+&apos; Replace keyboard glyphs by typographical correct glyphs.
 &apos; ----------------------------------------------------------------------
 
 Common.Main
@@ -19,7 +23,7 @@ end sub
 
 sub SmartQuotes
 &apos; ----------------------------------------------------------------------
-&apos; Replace primes by AE style quotation marks
+&apos; Replace primes by AE style quotation marks.
 &apos; ----------------------------------------------------------------------
 
 Common.SmartQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
@@ -30,7 +34,7 @@ end sub
 
 Sub TypewriterView
 &apos; ----------------------------------------------------------------------
-&apos; Keyboard glyphs only 
+&apos; Go back to &quot;typewriter&quot; style.
 &apos; ----------------------------------------------------------------------
 
 Revert.Prime
@@ -44,7 +48,7 @@ End Sub
 
 Sub ProtectQM
 &apos; ----------------------------------------------------------------------
-&apos; Prevent hyphenation around quotation marks
+&apos; Prevent hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
 Common.ProtectQM(&quot;“&quot;,&quot;”&quot;)
@@ -55,7 +59,7 @@ End Sub
 
 Sub UnprotectQM
 &apos; ----------------------------------------------------------------------
-&apos; Allow hyphenation around quotation marks
+&apos; Allow hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
 Common.UnprotectQM(&quot;“&quot;,&quot;”&quot;)
@@ -65,7 +69,7 @@ End Sub
 
 sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
-&apos; De-emphasize all but direct speech 
+&apos; De-emphasize all but direct speech.
 &apos; ----------------------------------------------------------------------
 
 Common.ShowDirectSpeech(&quot;“[^“]+”&quot;)
@@ -76,7 +80,7 @@ end sub
 
 sub StandardView
 &apos; ----------------------------------------------------------------------
-&apos; Set all text to default color
+&apos; Set all text to default color.
 &apos; ----------------------------------------------------------------------
 
 Common.StandardView

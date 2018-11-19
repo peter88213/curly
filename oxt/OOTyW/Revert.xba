@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Revert" script:language="StarBasic">REM  *****  BASIC  *****
+&apos; ----------------------------------------------------------------------
+&apos; Go back to &quot;typewriter&quot; style.
+&apos; ----------------------------------------------------------------------
+
 
 
 sub Prime
 &apos; ----------------------------------------------------------------------
-&apos; Convert all-type quotation marks into primes
+&apos; Convert all-type quotation marks into primes.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(1) As String
@@ -22,7 +26,7 @@ End Sub
 
 Sub Apostrophe
 &apos; ----------------------------------------------------------------------
-&apos; Convert apostrophes into number signs
+&apos; Convert apostrophes into number signs.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(0) As String
@@ -39,7 +43,7 @@ End Sub
 
 Sub Ellipsis
 &apos; ----------------------------------------------------------------------
-&apos; Convert ellipsis into three periods
+&apos; Convert ellipses into triple periods.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(0) As String
@@ -56,7 +60,7 @@ End Sub
 
 sub En_dash
 &apos; ----------------------------------------------------------------------
-&apos; Convert en-dashes into double hyphens
+&apos; Convert en-dashes into double hyphens.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(0) As String
@@ -73,7 +77,7 @@ End Sub
 
 sub Em_dash
 &apos; ----------------------------------------------------------------------
-&apos; Convert em-dashes into double hyphens
+&apos; Convert em-dashes into double hyphens.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(0) As String
@@ -90,8 +94,8 @@ End Sub
 
 Sub UnprotectQM
 &apos; ----------------------------------------------------------------------
-&apos; Put breakable blanks at dashes and ellipses
-&apos; leading or terminating direct speech
+&apos; Replace non-breakable spaces by simple spaces at double hyphens
+&apos; and triple periods leading or terminating direct speech.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(3) As String

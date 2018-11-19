@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_en_GB" script:language="StarBasic">REM  *****  BASIC  *****
+&apos; ----------------------------------------------------------------------
+&apos; Do conversions according to BE conventions.
+&apos; ----------------------------------------------------------------------
+
 
 
 sub Main
 &apos; ----------------------------------------------------------------------
-&apos; Replace keyboard glyphs by typographical correct glyphs
+&apos; Replace keyboard glyphs by typographical correct glyphs.
 &apos; ----------------------------------------------------------------------
 
 Common.Em_dash
@@ -19,7 +23,7 @@ end sub
 
 sub SmartQuotes
 &apos; ----------------------------------------------------------------------
-&apos; Replace primes by BE style quotation marks
+&apos; Replace primes by BE style quotation marks.
 &apos; ----------------------------------------------------------------------
 
 Common.SmartQuotes(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
@@ -30,12 +34,12 @@ end sub
 
 Sub TypewriterView
 &apos; ----------------------------------------------------------------------
-&apos; Keyboard glyphs only 
+&apos; Go back to &quot;typewriter&quot; style.
 &apos; ----------------------------------------------------------------------
 Dim AOldStr(2) As String
 Dim ANewStr(2) As String
 
-AOldStr() = Array(&quot;([a-zäöüß])’([a-zäöüß])&quot;,&quot; ’&quot;,&quot;[“”]&quot;,&quot;[‘’]&quot;)
+AOldStr() = Array(&quot;([:alpha:])’([:alpha:])&quot;,&quot; ’&quot;,&quot;[“”]&quot;,&quot;[‘’]&quot;)
 ANewStr() = Array(&quot;$1&apos;$2&quot;,&quot; &apos;&quot;,&quot;&apos;&quot;,CHR$(34))
 
 sar(AOldStr,ANewStr,True)
@@ -50,7 +54,7 @@ End Sub
 
 Sub ProtectQM
 &apos; ----------------------------------------------------------------------
-&apos; Prevent hyphenation around quotation marks
+&apos; Prevent hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
 Common.ProtectQM(&quot;‘&quot;,&quot;’&quot;)
@@ -61,7 +65,7 @@ End Sub
 
 Sub UnprotectQM
 &apos; ----------------------------------------------------------------------
-&apos; Allow hyphenation around quotation marks
+&apos; Allow hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
 Common.UnprotectQM(&quot;‘&quot;,&quot;’&quot;)
@@ -71,10 +75,29 @@ End Sub
 
 sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
-&apos; De-emphasize all but direct speech 
+&apos; De-emphasize all but direct speech.
 &apos; ----------------------------------------------------------------------
 
+&apos; ----------------------------------------------------------------------
+&apos; Hide apostrophes not to be confused with quotes
+
+Dim AOldStr(0) As String
+Dim ANewStr(0) As String
+
+AOldStr() = Array(&quot;([:alpha:])’([:alpha:])&quot;)
+ANewStr() = Array(&quot;$1&apos;$2&quot;)
+
+sar(AOldStr,ANewStr,True)
+
+&apos; ----------------------------------------------------------------------
+&apos; colorize non-direct-speech 
+
 Common.ShowDirectSpeech(&quot;‘[^‘]+’&quot;)
+
+&apos; ----------------------------------------------------------------------
+&apos; Restore apostrophes
+
+Common.Apostrophe
 
 end sub
 
@@ -82,7 +105,7 @@ end sub
 
 sub StandardView
 &apos; ----------------------------------------------------------------------
-&apos; Set all text to default color
+&apos; Set all text to default color.
 &apos; ----------------------------------------------------------------------
 
 Common.StandardView

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_de_DE" script:language="StarBasic">REM  *****  BASIC  *****
+&apos; ----------------------------------------------------------------------
+&apos; Do conversions according to Germany&apos;s conventions.
+&apos; Konvertierungen nach den in Deutschland üblichen Regeln.
+&apos; ----------------------------------------------------------------------
+
 
 
 sub Main
 &apos; ----------------------------------------------------------------------
-&apos; Tastaturglyphen durch  typographisch korrekte Glyphen ersetzen
+&apos; Tastaturglyphen durch  typographisch korrekte Glyphen ersetzen.
 &apos; ----------------------------------------------------------------------
 
 Common.Main
@@ -19,7 +24,7 @@ end sub
 
 sub SmartQuotes
 &apos; ----------------------------------------------------------------------
-&apos; Prime durch Chevrons ersetzen
+&apos; Prime durch Chevrons ersetzen.
 &apos; ----------------------------------------------------------------------
 
 Common.SmartQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
@@ -30,7 +35,7 @@ end sub
 
 Sub TypewriterView
 &apos; ----------------------------------------------------------------------
-&apos; Keyboard glyphs only 
+&apos; Zurück zum &quot;Schreibmaschinenstil&quot;. 
 &apos; ----------------------------------------------------------------------
 
 Revert.Apostrophe
@@ -45,10 +50,10 @@ End Sub
 
 sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
-&apos; Alles außer wörtlicher Rede ausgrauen
+&apos; Alles außer wörtlicher Rede ausgrauen.
 &apos; ----------------------------------------------------------------------
 
-Common.ShowDirectSpeech(&quot;»[^»]+«&quot;)
+Common.ShowDirectSpeech(&quot;»[^»]+«|„[^„]+“&quot;)
 
 end sub
 
@@ -56,7 +61,7 @@ end sub
 
 sub StandardView
 &apos; ----------------------------------------------------------------------
-&apos; Den gesamten Text auf die Standardfarbe zurücksetzen
+&apos; Den gesamten Text auf die Standardfarbe zurücksetzen.
 &apos; ----------------------------------------------------------------------
 
 Common.StandardView
@@ -67,7 +72,7 @@ end sub
 
 Sub ProtectQM
 &apos; ----------------------------------------------------------------------
-&apos; Silbentrennung vor und nach Anführungszeichen verhindern
+&apos; Silbentrennung vor und nach Anführungszeichen verhindern.
 &apos; ----------------------------------------------------------------------
 
 Common.ProtectQM(&quot;»&quot;,&quot;«&quot;)
@@ -79,7 +84,7 @@ End Sub
 
 Sub UnprotectQM
 &apos; ----------------------------------------------------------------------
-&apos; Nichttrennbare Leerzeichen um Ellipsen und Gedankenstriche entfernen
+&apos; Nichttrennbare Leerzeichen um Ellipsen und Gedankenstriche entfernen.
 &apos; ----------------------------------------------------------------------
 
 Common.UnprotectQM(&quot;»&quot;,&quot;«&quot;)
@@ -91,7 +96,7 @@ End Sub
 
 Sub Chevrons
 &apos; ----------------------------------------------------------------------
-&apos; Gänsefüßchen in Chevrons umwandeln
+&apos; Gänsefüßchen in Chevrons umwandeln.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(3) As String
@@ -108,7 +113,7 @@ End Sub
 
 Sub Anfuehrungszeichen
 &apos; ----------------------------------------------------------------------
-&apos; Chevrons in Gänsefüßchen umwandeln
+&apos; Chevrons in Gänsefüßchen umwandeln.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(3) As String
