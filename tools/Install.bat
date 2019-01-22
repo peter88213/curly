@@ -5,7 +5,7 @@ REM
 REM author: Peter Triesberger
 REM see: https://github.com/peter88213/OOTyW
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
-REM copyright: (c) 2018, Peter Triesberger
+REM copyright: (c) 2019, Peter Triesberger
 REM 
 REM note: This script is to be executed manually.
 REM 
@@ -20,8 +20,9 @@ REM change: 2018-11-04 v1.1.1: Changed order of subroutine calls
 REM change: 2018-11-18 v1.1.2: Fixed bug in SmartQuotes macro
 REM change: 2018-11-18 v1.1.3: Optimized SmartQuotes macro
 REM change: 2018-11-19 v1.1.4: Improved german and BE "view direct speech" feature
+REM change: 2019-01-22 v1.1.5: Fixed bug in SmartQuotes macro
 
-set _release=1.1.4
+set _release=1.1.5
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4

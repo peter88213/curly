@@ -132,8 +132,8 @@ sub SmartQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 Dim AOldStr(6) As String
 Dim ANewStr(6) As String
 
-AOldStr() = Array(&quot;^&quot;+CHR$(34),&quot; &quot;+CHR$(34),CHR$(34),&quot;^&apos;&quot;,&quot; &apos;&quot;,ChOpen2+&quot;&apos;&quot;,&quot;&apos;&quot;)
-ANewStr() = Array(ChOpen2,&quot; &quot;+ChOpen2,ChClose2,ChOpen1,&quot; &quot;+ChOpen1,ChOpen2+ChOpen1,ChClose1)
+AOldStr() = Array(&quot;^&quot;+CHR$(34),&quot; &quot;+CHR$(34),&quot;\(&quot;+CHR$(34),CHR$(34),&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,ChOpen2+&quot;&apos;&quot;,&quot;&apos;&quot;)
+ANewStr() = Array(ChOpen2,&quot; &quot;+ChOpen2,&quot;(&quot;+ChOpen2,ChClose2,ChOpen1,&quot; &quot;+ChOpen1,&quot;(&quot;+ChOpen1,ChOpen2+ChOpen1,ChClose1)
 
 sar(AOldStr,ANewStr,True)
 
