@@ -1,2 +1,2 @@
-* linguist-vendored
+*.bat linguist-vendored
 *.xba linguist-language=StarBasic
