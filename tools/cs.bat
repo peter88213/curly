@@ -7,7 +7,7 @@ REM see: https://github.com/peter88213/OOTyW
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2019, Peter Triesberger
 
-set _release=1.1.5
+set _release=1.1.6
 
 set _project=OOTyW
 
@@ -55,6 +55,10 @@ set _dest=%_target%\program\
 call :copyFile
 
 set _file=%_root%\oxt\OOTyW-A-%_release%.oxt
+set _dest=%_target%\program\
+call :copyFile
+
+set _file=%_root%\oxt\OOTyW-L-%_release%.oxt
 set _dest=%_target%\program\
 call :copyFile
 
