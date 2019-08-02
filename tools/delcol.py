@@ -38,6 +38,7 @@ def searchAndReplace(processData, replaceList):
         if (processData.find(replaceItem[0]) != -1): 
             processData = processData.replace(replaceItem[0],replaceItem[1])
             FindCount += 1
+#            print(replaceItem[0]+" - ",FindCount)
     if (FindCount is 0):
         return("")
     else: 
@@ -46,22 +47,31 @@ def searchAndReplace(processData, replaceList):
 if __name__ == '__main__':
     xmldoc ="content.xml"
     odtdoc = sys.argv[1]
+#    print(odtdoc)
+    str = ""
     try:
         with zipfile.ZipFile(odtdoc,'r') as myzip:
             myzip.extract(xmldoc)
             myzip.close
-        myTextFile = open(xmldoc,'r')
-        str = myTextFile.read()
-        myTextFile.close()
-
-        str = searchAndReplace(str, replaceList)
-        
-        if (str != ""):
-            myTextFile = open(xmldoc,'w')
-            myTextFile.write(str)
-            myTextFile.close()
-        else: 
-            os.remove(xmldoc)
+#        print(xmldoc+" extracted ...")
     except:
         print("Syntax: delcol.py <ODT file to modify>")
+        exit(1)
+    try: 
+        myTextFile = open(xmldoc,'r',encoding = 'utf-8')
+#        print(xmldoc+" opened ...")
+        str = myTextFile.read()
+        str = searchAndReplace(str, replaceList)
     
+    finally: 
+        myTextFile.close()
+#        print(xmldoc+" closed ...")
+        os.remove(xmldoc)
+#        print(xmldoc+" deleted ...")
+
+   
+    if (str != ""):
+        myTextFile = open(xmldoc,'w',encoding = 'utf-8')
+        myTextFile.write(str)
+        myTextFile.close()
+#        print(xmldoc+" written ...")
