@@ -15,7 +15,7 @@ Syntax: delcol.py <ODT file to modify>
 @since: 2019-08-02
 
 '''
-import sys, re, zipfile
+import sys, zipfile, os
 
 replaceList =[
     'fo:color="#cccccc"||',
@@ -32,10 +32,16 @@ def searchAndReplace(processData, replaceList):
         The replacement item can be empty.  
     @return: Modified string
     '''   
+    FindCount = 0
     for line in replaceList:
-        replaceItem = line.split("|") 
-        processData = processData.replace(replaceItem[0],replaceItem[1])
-    return(processData)
+        replaceItem = line.split("|")
+        if (processData.find(replaceItem[0]) != -1): 
+            processData = processData.replace(replaceItem[0],replaceItem[1])
+            FindCount += 1
+    if (FindCount is 0):
+        return("")
+    else: 
+        return(processData)
 
 if __name__ == '__main__':
     xmldoc ="content.xml"
@@ -50,9 +56,12 @@ if __name__ == '__main__':
 
         str = searchAndReplace(str, replaceList)
         
-        myTextFile = open(xmldoc,'w')
-        myTextFile.write(str)
-        myTextFile.close()
+        if (str != ""):
+            myTextFile = open(xmldoc,'w')
+            myTextFile.write(str)
+            myTextFile.close()
+        else: 
+            os.remove(xmldoc)
     except:
         print("Syntax: delcol.py <ODT file to modify>")
     
