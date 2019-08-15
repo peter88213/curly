@@ -24,10 +24,10 @@ end sub
 
 sub SmartQuotes
 &apos; ----------------------------------------------------------------------
-&apos; Prime durch Chevrons ersetzen.
+&apos; Prime durch Gänsefüßchen ersetzen.
 &apos; ----------------------------------------------------------------------
 
-Common.SmartQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.SmartQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
 
 end sub
 
