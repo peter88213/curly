@@ -1,4 +1,4 @@
-# Delete text color tags from all ODT files in [userprofile]\Documents
+# Delete text color markup from all ODT files in [userprofile]\Documents
 
 ## Please note:
 This toolkit is experimental. **Use it at your own risk**. 
@@ -11,7 +11,7 @@ Do not use it, in case you don't understand the batch code.
 * Leave the ODT file untouched, if *content.xml* contains no *fo:color="#cccccc"*, *fo:color="#000000"*, or *style:use-window-font-color="true"* tag.
 * Otherwise, Remove any tags mentioned above from *content.xml*, and replace ODT file's *content.xml*.
 
-This will remove any text color tags left by OOTyW's "show direct speech" command.
+This will remove any text color markup left by OOTyW's "show direct speech" command.
 
 ## Requirements
 * Python 3 installation (PATH must be set).
