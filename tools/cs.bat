@@ -30,6 +30,9 @@ del /s /q %_target%
 mkdir %_target%\program
 del /s /q %_target%\program
 
+mkdir %_target%\add-on
+del /s /q %_target%\add-on
+copy %_source%\add-on\*.* %_target%\add-on\
 
 rem --------------------------------------------------------
 rem Generate english README file with release info
