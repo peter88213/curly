@@ -15,14 +15,7 @@ REM postcondition: Previously auto-installed items of OOTyW are removed.
 REM postcondition: The template remains, if user wants it.
 REM 
 REM since: 2018-10-31
-REM change: 2018-11-04 v1.1.0: Added BE (en-GB) support, EM-dash
-REM change: 2018-11-04 v1.1.1: Changed order of subroutine calls
-REM change: 2018-11-18 v1.1.2: Fixed bug in SmartQuotes macro
-REM change: 2018-11-18 v1.1.3: Optimized SmartQuotes macro
-REM change: 2018-11-19 v1.1.4: Improved german and BE "view direct speech" feature
-REM change: 2019-01-22 v1.1.5: Fixed bug in SmartQuotes macro
-REM change: 2019-05-26 v1.1.6: Replaced LibreOffice 5 references by LibreOffice 6 references
-REM change: 2019-08-15 v1.2.0: LibreOffice 6.x installation enabled; changed german default quotes to "Gaensefuesschen"
+REM History: see Install.bat
 
 set _release=1.2.0
 
