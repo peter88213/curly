@@ -26,7 +26,8 @@ sub SmartQuotes
 &apos; Replace primes by BE style quotation marks.
 &apos; ----------------------------------------------------------------------
 
-Common.SmartQuotes(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
+Common.SubstitutePrimesI
+Common.CurlyQuotes(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
 
 end sub
 
@@ -36,17 +37,23 @@ Sub TypewriterView
 &apos; ----------------------------------------------------------------------
 &apos; Go back to &quot;typewriter&quot; style.
 &apos; ----------------------------------------------------------------------
-Dim AOldStr(2) As String
-Dim ANewStr(2) As String
 
-AOldStr() = Array(&quot;([:alpha:])’([:alpha:])&quot;,&quot; ’&quot;,&quot;[“”]&quot;,&quot;[‘’]&quot;)
-ANewStr() = Array(&quot;$1&apos;$2&quot;,&quot; &apos;&quot;,&quot;&apos;&quot;,CHR$(34))
-
-sar(AOldStr,ANewStr,True)
-
+Common.SubstituteQuotes(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
+Revert.PrimeI
 Revert.Ellipsis
-Revert.Em_dash
+Revert.Dash
 Revert.UnprotectQM
+
+End Sub
+
+
+
+Sub SubstituteQuotes
+&apos; ----------------------------------------------------------------------
+&apos; Exchange format for language conversion
+&apos; ----------------------------------------------------------------------
+
+Common.SubstituteQuotes(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
 
 End Sub
 

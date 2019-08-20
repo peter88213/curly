@@ -26,7 +26,8 @@ sub SmartQuotes
 &apos; Replace primes by AE style quotation marks.
 &apos; ----------------------------------------------------------------------
 
-Common.SmartQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
+Common.SubstitutePrimesII
+Common.CurlyQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
 
 end sub
 
@@ -37,10 +38,22 @@ Sub TypewriterView
 &apos; Go back to &quot;typewriter&quot; style.
 &apos; ----------------------------------------------------------------------
 
-Revert.Prime
+Common.SubstituteQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
+Revert.PrimeII
 Revert.Ellipsis
-Revert.Em_dash
+Revert.Dash
 Revert.UnprotectQM
+
+End Sub
+
+
+
+Sub SubstituteQuotes
+&apos; ----------------------------------------------------------------------
+&apos; Exchange format for language conversion
+&apos; ----------------------------------------------------------------------
+
+Common.SubstituteQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
 
 End Sub
 

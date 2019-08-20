@@ -123,19 +123,101 @@ End Sub
 
 
 
-sub SmartQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
+sub SubstitutePrimesI
 &apos; ----------------------------------------------------------------------
-&apos; Replace single and double primes by smart quotes
+&apos; Replace single and double primes by &quot;neutral&quot; quote substitutes
+&apos; according to parameters.
+&apos; Initial quotation is single (&apos;)
+&apos; ----------------------------------------------------------------------
+
+Dim AOldStr(7) As String
+Dim ANewStr(7) As String
+
+&apos; Define quote substitutes for intermediate formatting
+sChopen1 = &quot;┌&quot;
+sChClose1 = &quot;┐&quot;
+sChopen2 = &quot;└&quot;
+sChClose2 = &quot;┘&quot;
+sApostrophe = &quot;│&quot;
+
+AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,&quot;&apos;&quot;,&quot;^&quot;+CHR$(34),&quot; &quot;+CHR$(34),&quot;\(&quot;+CHR$(34),sChOpen2+CHR$(34),CHR$(34))
+ANewStr() = Array(&quot;$1&quot;+sApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
+
+sar(AOldStr,ANewStr,True)
+
+End Sub
+
+
+sub SubstitutePrimesII
+&apos; ----------------------------------------------------------------------
+&apos; Replace single and double primes by &quot;neutral&quot; quote substitutes
+&apos; according to parameters.
+&apos; Initial quotation is double (&quot;)
+&apos; ----------------------------------------------------------------------
+
+Dim AOldStr(7) As String
+Dim ANewStr(7) As String
+
+&apos; Define quote substitutes for intermediate formatting
+sChopen1 = &quot;┌&quot;
+sChClose1 = &quot;┐&quot;
+sChopen2 = &quot;└&quot;
+sChClose2 = &quot;┘&quot;
+sApostrophe = &quot;│&quot;
+
+AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&quot;+CHR$(34),&quot; &quot;+CHR$(34),&quot;\(&quot;+CHR$(34),CHR$(34),&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,sChOpen2+&quot;&apos;&quot;,&quot;&apos;&quot;)
+ANewStr() = Array(&quot;$1&quot;+sApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
+
+sar(AOldStr,ANewStr,True)
+
+End Sub
+
+
+sub SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
+&apos; ----------------------------------------------------------------------
+&apos; Replace curly quotes by &quot;neutral&quot; substitutes
 &apos; according to parameters.
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(6) As String
-Dim ANewStr(6) As String
+Dim AOldStr(5) As String
+Dim ANewStr(5) As String
 
-AOldStr() = Array(&quot;^&quot;+CHR$(34),&quot; &quot;+CHR$(34),&quot;\(&quot;+CHR$(34),CHR$(34),&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,ChOpen2+&quot;&apos;&quot;,&quot;&apos;&quot;)
-ANewStr() = Array(ChOpen2,&quot; &quot;+ChOpen2,&quot;(&quot;+ChOpen2,ChClose2,ChOpen1,&quot; &quot;+ChOpen1,&quot;(&quot;+ChOpen1,ChOpen2+ChOpen1,ChClose1)
+&apos; Define quote substitutes for intermediate formatting
+sChopen1 = &quot;┌&quot;
+sChClose1 = &quot;┐&quot;
+sChopen2 = &quot;└&quot;
+sChClose2 = &quot;┘&quot;
+sApostrophe = &quot;│&quot;
+
+AOldStr() = Array(&quot;([:alpha:])’([:alpha:])&quot;,ChOpen1,ChClose1,ChOpen2,ChClose2,&quot;’&quot;)
+ANewStr() = Array(&quot;$1&quot;+sApostrophe+&quot;$2&quot;,sChOpen1,sChClose1,sChOpen2,sChClose2,sApostrophe)
 
 sar(AOldStr,ANewStr,True)
+
+End Sub
+
+
+
+sub CurlyQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
+&apos; ----------------------------------------------------------------------
+&apos; Replace &quot;neutral&quot; quote substitutes by curly quotes
+&apos; according to parameters.
+&apos; ----------------------------------------------------------------------
+
+Dim AOldStr(4) As String
+Dim ANewStr(4) As String
+
+&apos; Define &quot;neutral&quot; Quotes for intermediate formatting
+sChopen1 = &quot;┌&quot;
+sChClose1 = &quot;┐&quot;
+sChopen2 = &quot;└&quot;
+sChClose2 = &quot;┘&quot;
+sApostrophe = &quot;│&quot;
+
+AOldStr() = Array(sApostrophe,sChOpen1,sChClose1,sChOpen2,sChClose2)
+ANewStr() = Array(&quot;’&quot;,ChOpen1,ChClose1,ChOpen2,ChClose2)
+
+sar(AOldStr,ANewStr,False)
 
 End Sub
 

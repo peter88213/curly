@@ -27,7 +27,8 @@ sub SmartQuotes
 &apos; Prime durch Gänsefüßchen ersetzen.
 &apos; ----------------------------------------------------------------------
 
-Common.SmartQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+Common.SubstitutePrimesII
+Common.CurlyQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
 
 end sub
 
@@ -38,11 +39,24 @@ Sub TypewriterView
 &apos; Zurück zum &quot;Schreibmaschinenstil&quot;. 
 &apos; ----------------------------------------------------------------------
 
-Revert.Apostrophe
+Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Revert.PrimeII
 Revert.Ellipsis
-Revert.En_dash
-Revert.Prime
+Revert.Dash
 Revert.UnprotectQM
+
+End Sub
+
+
+
+Sub SubstituteQuotes
+&apos; ----------------------------------------------------------------------
+&apos; Austauschformat zur Sprachumwandlung 
+&apos; ----------------------------------------------------------------------
+
+Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
 
 End Sub
 
@@ -99,13 +113,8 @@ Sub Chevrons
 &apos; Gänsefüßchen in Chevrons umwandeln.
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(3) As String
-Dim ANewStr(3) As String
-
-AOldStr() = Array(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
-ANewStr() = Array(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
-
-common.sar(AOldStr,ANewStr,False)
+Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+Common.CurlyQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
 
 End Sub
 
@@ -116,13 +125,8 @@ Sub Anfuehrungszeichen
 &apos; Chevrons in Gänsefüßchen umwandeln.
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(3) As String
-Dim ANewStr(3) As String
-
-AOldStr() = Array(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
-ANewStr() = Array(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
-
-common.sar(AOldStr,ANewStr,False)
+Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.CurlyQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
 
 End Sub
 

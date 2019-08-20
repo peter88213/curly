@@ -24,8 +24,9 @@ REM change: 2019-01-22 v1.1.5: Fixed bug in SmartQuotes macro
 REM change: 2019-05-26 v1.1.6: Replaced LibreOffice 5 references by LibreOffice 6 references
 REM change: 2019-08-15 v1.2.0: LibreOffice 6.x installation enabled; changed german default quotes to "Gaensefuesschen"
 REM change: 2019-08-18 v1.2.1: Fixed typo in user interface
+REM change: 2019-08-20 v1.3.0: Introcuced exchange format for quotes. New behaviour of (en-GB) version.
 
-set _release=1.2.1
+set _release=1.3.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4

@@ -7,35 +7,51 @@
 
 
 
-sub Prime
+sub PrimeI
 &apos; ----------------------------------------------------------------------
-&apos; Convert all-type quotation marks into primes.
+&apos; Convert substituted quotes into primes.
+&apos; Initial quotation is single (&apos;)
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(1) As String
-Dim ANewStr(1) As String
+Dim AOldStr(4) As String
+Dim ANewStr(4) As String
 
-AOldStr() = Array(&quot;[‚‘’›‹]&quot;,&quot;[„“”»«]&quot;)
-ANewStr() = Array(&quot;&apos;&quot;, CHR$(34))
+&apos; Define quote substitutes for intermediate formatting
+sChopen1 = &quot;┌&quot;
+sChClose1 = &quot;┐&quot;
+sChopen2 = &quot;└&quot;
+sChClose2 = &quot;┘&quot;
+sApostrophe = &quot;│&quot;
 
-common.sar(AOldStr,ANewStr,True)
+AOldStr() = Array(sChOpen1,sChClose1,sChOpen2,sChClose2,sApostrophe,&quot;([:alpha:])#([:alpha:])&quot;)
+ANewStr() = Array(CHR$(34),CHR$(34),&quot;&apos;&quot;,&quot;&apos;&quot;,&quot;#&quot;,&quot;$1&apos;$2&quot;)
+
+Common.sar(AOldStr,ANewStr,True)
 
 End Sub
 
 
 
-Sub Apostrophe
+sub PrimeII
 &apos; ----------------------------------------------------------------------
-&apos; Convert apostrophes into number signs.
+&apos; Convert substituted quotes into primes.
+&apos; Initial quotation is double (&quot;)
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(0) As String
-Dim ANewStr(0) As String
+Dim AOldStr(5) As String
+Dim ANewStr(5) As String
 
-AOldStr() = Array(&quot;’&quot;)
-ANewStr() = Array(&quot;#&quot;)
+&apos; Define quote substitutes for intermediate formatting
+sChopen1 = &quot;┌&quot;
+sChClose1 = &quot;┐&quot;
+sChopen2 = &quot;└&quot;
+sChClose2 = &quot;┘&quot;
+sApostrophe = &quot;│&quot;
 
-common.sar(AOldStr,ANewStr,False)
+AOldStr() = Array(sChOpen1,sChClose1,sChOpen2,sChClose2,sApostrophe,&quot;([:alpha:])#([:alpha:])&quot;)
+ANewStr() = Array(&quot;&apos;&quot;,&quot;&apos;&quot;,CHR$(34),CHR$(34),&quot;#&quot;,&quot;$1&apos;$2&quot;)
+
+Common.sar(AOldStr,ANewStr,True)
 
 End Sub
 
@@ -58,33 +74,16 @@ End Sub
 
 
 
-sub En_dash
+sub Dash
 &apos; ----------------------------------------------------------------------
-&apos; Convert en-dashes into double hyphens.
-&apos; ----------------------------------------------------------------------
-
-Dim AOldStr(0) As String
-Dim ANewStr(0) As String
-
-AOldStr() = Array(&quot;–&quot;)
-ANewStr() = Array(&quot;--&quot;)
-
-common.sar(AOldStr,ANewStr,False)
-
-End Sub
-
-
-
-sub Em_dash
-&apos; ----------------------------------------------------------------------
-&apos; Convert em-dashes into double hyphens.
+&apos; Convert en-dashes and em-dashes into double hyphens.
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(0) As String
-Dim ANewStr(0) As String
+Dim AOldStr(1) As String
+Dim ANewStr(1) As String
 
-AOldStr() = Array(&quot;—&quot;)
-ANewStr() = Array(&quot;--&quot;)
+AOldStr() = Array(&quot;–&quot;,&quot;—&quot;)
+ANewStr() = Array(&quot;--&quot;,&quot;--&quot;)
 
 common.sar(AOldStr,ANewStr,False)
 
