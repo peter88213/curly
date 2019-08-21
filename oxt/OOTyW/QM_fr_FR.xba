@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
-<script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_de_DE" script:language="StarBasic">REM  *****  BASIC  *****
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_fr_FR" script:language="StarBasic">REM  *****  BASIC  *****
 &apos; ----------------------------------------------------------------------
-&apos; Do conversions according to Germany&apos;s conventions.
-&apos; Konvertierungen nach den in Deutschland üblichen Regeln.
+&apos; Do conversions according to french conventions.
 &apos; ----------------------------------------------------------------------
 
 
 
 sub Main
 &apos; ----------------------------------------------------------------------
-&apos; Tastaturglyphen durch  typographisch korrekte Glyphen ersetzen.
+&apos; Replace keyboard glyphs by typographical correct glyphs.
 &apos; ----------------------------------------------------------------------
 
 Common.Main
-Common.En_dash
+Common.Em_dash
 SmartQuotes
 ProtectQM
 
@@ -24,11 +23,12 @@ end sub
 
 sub SmartQuotes
 &apos; ----------------------------------------------------------------------
-&apos; Prime durch Gänsefüßchen ersetzen.
+&apos; Remplacer des signes prime par guillemets.
+&apos; Replace primes by french style quotation marks.
 &apos; ----------------------------------------------------------------------
 
 Common.SubstitutePrimesII
-Common.CurlyQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+Common.CurlyQuotes(&quot;‹&quot;+Chr(160),Chr(160)+&quot;›&quot;,&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
 
 end sub
 
@@ -36,11 +36,11 @@ end sub
 
 Sub TypewriterView
 &apos; ----------------------------------------------------------------------
-&apos; Zurück zum &quot;Schreibmaschinenstil&quot;. 
+&apos; Go back to &quot;typewriter&quot; style. 
 &apos; ----------------------------------------------------------------------
 
 Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
-Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.SubstituteQuotes(&quot;‹&quot;+Chr(160),Chr(160)+&quot;›&quot;,&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
 Revert.PrimeII
 Revert.Ellipsis
 Revert.Dash
@@ -52,11 +52,11 @@ End Sub
 
 Sub SubstituteQuotes
 &apos; ----------------------------------------------------------------------
-&apos; Austauschformat zur Sprachumwandlung.
+&apos; Exchange format for language conversion.
 &apos; ----------------------------------------------------------------------
 
 Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
-Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.SubstituteQuotes(&quot;‹&quot;+Chr(160),Chr(160)+&quot;›&quot;,&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
 
 End Sub
 
@@ -64,10 +64,10 @@ End Sub
 
 sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
-&apos; Alles außer wörtlicher Rede ausgrauen.
+&apos; Gray-out all but direct speech.
 &apos; ----------------------------------------------------------------------
 
-Common.ShowDirectSpeech(&quot;»[^»]+«|„[^„]+“&quot;)
+Common.ShowDirectSpeech(&quot;«&quot;+Chr(160)+&quot;[^«&quot;+Chr(160)+&quot;]&quot;+Chr(160)+&quot;»|„[^„]+“&quot;)
 
 end sub
 
@@ -75,7 +75,7 @@ end sub
 
 sub StandardView
 &apos; ----------------------------------------------------------------------
-&apos; Den gesamten Text auf die Standardfarbe zurücksetzen.
+&apos; Set all text to default color.
 &apos; ----------------------------------------------------------------------
 
 Common.StandardView
@@ -86,10 +86,11 @@ end sub
 
 Sub ProtectQM
 &apos; ----------------------------------------------------------------------
-&apos; Silbentrennung vor und nach Anführungszeichen verhindern.
+&apos; Ajouter espaces insécables devant et après.
+&apos; Prevent hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
-Common.ProtectQM(&quot;»&quot;,&quot;«&quot;)
+Common.ProtectQM(&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
 Common.ProtectQM(&quot;„&quot;,&quot;“&quot;)
 
 End Sub
@@ -98,35 +99,35 @@ End Sub
 
 Sub UnprotectQM
 &apos; ----------------------------------------------------------------------
-&apos; Nichttrennbare Leerzeichen um Ellipsen und Gedankenstriche entfernen.
+&apos; Allow hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
-Common.UnprotectQM(&quot;»&quot;,&quot;«&quot;)
+Common.UnprotectQM(&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
 Common.UnprotectQM(&quot;„&quot;,&quot;“&quot;)
 
 End Sub
 
 
 
-Sub Chevrons
+Sub Guillemets
 &apos; ----------------------------------------------------------------------
-&apos; Gänsefüßchen in Chevrons umwandeln.
+&apos; Remplacer guillemets anglais par chevrons.
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
-Common.CurlyQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.SubstituteQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
+Common.CurlyQuotes(&quot;‹&quot;+Chr(160),Chr(160)+&quot;›&quot;,&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
 
 End Sub
 
 
 
-Sub Anfuehrungszeichen
+Sub GuillemetsAnglais
 &apos; ----------------------------------------------------------------------
-&apos; Chevrons in Gänsefüßchen umwandeln.
+&apos; Remplacer chevrons par guillemets anglais.
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
-Common.CurlyQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+Common.SubstituteQuotes(&quot;‹&quot;+Chr(160),Chr(160)+&quot;›&quot;,&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
+Common.CurlyQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
 
 End Sub
 

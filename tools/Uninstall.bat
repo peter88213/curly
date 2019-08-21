@@ -17,7 +17,7 @@ REM
 REM since: 2018-10-31
 REM History: see Install.bat
 
-set _release=1.3.0
+set _release=1.4.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4

@@ -50,7 +50,7 @@ End Sub
 
 Sub SubstituteQuotes
 &apos; ----------------------------------------------------------------------
-&apos; Exchange format for language conversion
+&apos; Exchange format for language conversion.
 &apos; ----------------------------------------------------------------------
 
 Common.SubstituteQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
@@ -82,7 +82,7 @@ End Sub
 
 sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
-&apos; De-emphasize all but direct speech.
+&apos; Gray-out all but direct speech.
 &apos; ----------------------------------------------------------------------
 
 Common.ShowDirectSpeech(&quot;“[^“]+”&quot;)

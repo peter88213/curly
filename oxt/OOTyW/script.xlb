@@ -7,4 +7,6 @@
  <library:element library:name="QM_en_US"/>
  <library:element library:name="QM_de_DE"/>
  <library:element library:name="QM_en_GB"/>
+ <library:element library:name="QM_de_CH"/>
+ <library:element library:name="QM_fr_FR"/>
 </library:library>
