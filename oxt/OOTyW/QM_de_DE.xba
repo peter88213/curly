@@ -2,14 +2,45 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="QM_de_DE" script:language="StarBasic">REM  *****  BASIC  *****
 &apos; ----------------------------------------------------------------------
-&apos; Do conversions according to Germany&apos;s conventions.
-&apos; Konvertierungen nach den in Deutschland üblichen Regeln.
+&apos; Do conversions according to Germany&apos;s and Austria&apos;s conventions.
+&apos; Konvertierungen nach den in Deutschland und Österreich üblichen Regeln.
 &apos; ----------------------------------------------------------------------
+
+Option Explicit
+
+&apos; ----------------------------------------------------------------------
+&apos; Define language specific normal quotes
+&apos; Gänsefüßchen als Standard
+&apos; ----------------------------------------------------------------------
+&apos; ChOpen/Close1 is for speech within speech
+&apos; ChOpen/Close2 is for initial quoting
+Const ChOpen1 = &quot;‚&quot;
+Const ChClose1 = &quot;‘&quot;
+Const ChOpen2 = &quot;„&quot;
+Const ChClose2 = &quot;“&quot;
+
+&apos; ----------------------------------------------------------------------
+&apos; Define language specific alternative quotes
+&apos; Chevrons als Alternative
+&apos; ----------------------------------------------------------------------
+&apos; aChOpen/Close1 is for speech within speech
+&apos; aChOpen/Close2 is for initial quoting
+Const aChOpen1 = &quot;›&quot;
+Const aChClose1 = &quot;‹&quot;
+Const aChOpen2 = &quot;»&quot;
+Const aChClose2 = &quot;«&quot;
+
+&apos; ----------------------------------------------------------------------
+&apos; Define regular expression for direct speech
+&apos; Regulärer Ausdruck für wörtliche Rede
+&apos; ----------------------------------------------------------------------
+Const SpeechRegex = &quot;»[^»]+«|„[^„]+“&quot;
 
 
 
 sub Main
 &apos; ----------------------------------------------------------------------
+&apos; Replace keyboard glyphs by typographical correct glyphs.
 &apos; Tastaturglyphen durch  typographisch korrekte Glyphen ersetzen.
 &apos; ----------------------------------------------------------------------
 
@@ -24,11 +55,12 @@ end sub
 
 sub SmartQuotes
 &apos; ----------------------------------------------------------------------
+&apos; Replace primes by DE style standard quotation marks.
 &apos; Prime durch Gänsefüßchen ersetzen.
 &apos; ----------------------------------------------------------------------
 
 Common.SubstitutePrimesII
-Common.CurlyQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+Common.CurlyQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 
 end sub
 
@@ -36,11 +68,12 @@ end sub
 
 Sub TypewriterView
 &apos; ----------------------------------------------------------------------
+&apos; Go back to &quot;typewriter&quot; style.
 &apos; Zurück zum &quot;Schreibmaschinenstil&quot;. 
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
-Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
+Common.SubstituteQuotes(aChOpen1,aChClose1,aChOpen2,aChClose2)
 Revert.PrimeII
 Revert.Ellipsis
 Revert.Dash
@@ -52,11 +85,12 @@ End Sub
 
 Sub SubstituteQuotes
 &apos; ----------------------------------------------------------------------
+&apos; Exchange format for language conversion.
 &apos; Austauschformat zur Sprachumwandlung.
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
-Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
+Common.SubstituteQuotes(aChOpen1,aChClose1,aChOpen2,aChClose2)
 
 End Sub
 
@@ -64,10 +98,11 @@ End Sub
 
 sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
+&apos; Gray-out all but direct speech.
 &apos; Alles außer wörtlicher Rede ausgrauen.
 &apos; ----------------------------------------------------------------------
 
-Common.ShowDirectSpeech(&quot;»[^»]+«|„[^„]+“&quot;)
+Common.ShowDirectSpeech(SpeechRegex)
 
 end sub
 
@@ -75,6 +110,7 @@ end sub
 
 sub StandardView
 &apos; ----------------------------------------------------------------------
+&apos; Set all text to default color.
 &apos; Den gesamten Text auf die Standardfarbe zurücksetzen.
 &apos; ----------------------------------------------------------------------
 
@@ -86,11 +122,12 @@ end sub
 
 Sub ProtectQM
 &apos; ----------------------------------------------------------------------
+&apos; Prevent hyphenation around quotation marks.
 &apos; Silbentrennung vor und nach Anführungszeichen verhindern.
 &apos; ----------------------------------------------------------------------
 
-Common.ProtectQM(&quot;»&quot;,&quot;«&quot;)
-Common.ProtectQM(&quot;„&quot;,&quot;“&quot;)
+Common.ProtectQM(ChOpen2,ChClose2)
+Common.ProtectQM(aChOpen2,aChClose2)
 
 End Sub
 
@@ -98,35 +135,38 @@ End Sub
 
 Sub UnprotectQM
 &apos; ----------------------------------------------------------------------
+&apos; Allow hyphenation around quotation marks.
 &apos; Nichttrennbare Leerzeichen um Ellipsen und Gedankenstriche entfernen.
 &apos; ----------------------------------------------------------------------
 
-Common.UnprotectQM(&quot;»&quot;,&quot;«&quot;)
-Common.UnprotectQM(&quot;„&quot;,&quot;“&quot;)
+Common.UnprotectQM(ChOpen2,ChClose2)
+Common.UnprotectQM(aChOpen2,aChClose2)
 
 End Sub
 
 
 
-Sub Chevrons
+Sub AlternativeQuotes
 &apos; ----------------------------------------------------------------------
+&apos; Convert normal quotes into alternative quotes
 &apos; Gänsefüßchen in Chevrons umwandeln.
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
-Common.CurlyQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
+Common.SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
+Common.CurlyQuotes(aChOpen1,aChClose1,aChOpen2,aChClose2)
 
 End Sub
 
 
 
-Sub Anfuehrungszeichen
+Sub NormalQuotes
 &apos; ----------------------------------------------------------------------
+&apos; Convert alternative quotes into normal quotes
 &apos; Chevrons in Gänsefüßchen umwandeln.
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;›&quot;,&quot;‹&quot;,&quot;»&quot;,&quot;«&quot;)
-Common.CurlyQuotes(&quot;‚&quot;,&quot;‘&quot;,&quot;„&quot;,&quot;“&quot;)
+Common.SubstituteQuotes(aChOpen1,aChClose1,aChOpen2,aChClose2)
+Common.CurlyQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 
 End Sub
 

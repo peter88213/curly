@@ -5,7 +5,7 @@
 &apos; Do conversions according to french conventions.
 &apos; ----------------------------------------------------------------------
 
-
+Option Explicit
 
 sub Main
 &apos; ----------------------------------------------------------------------
@@ -109,25 +109,25 @@ End Sub
 
 
 
-Sub Guillemets
+Sub NormalQuotes
 &apos; ----------------------------------------------------------------------
 &apos; Remplacer guillemets anglais par chevrons.
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
+Common.SubstituteQuotes(&quot;‘&quot;,ChApostrophe,&quot;“&quot;,&quot;”&quot;)
 Common.CurlyQuotes(&quot;‹&quot;+Chr(160),Chr(160)+&quot;›&quot;,&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
 
 End Sub
 
 
 
-Sub GuillemetsAnglais
+Sub AlternativeQuotes
 &apos; ----------------------------------------------------------------------
 &apos; Remplacer chevrons par guillemets anglais.
 &apos; ----------------------------------------------------------------------
 
 Common.SubstituteQuotes(&quot;‹&quot;+Chr(160),Chr(160)+&quot;›&quot;,&quot;«&quot;+Chr(160),Chr(160)+&quot;»&quot;)
-Common.CurlyQuotes(&quot;‘&quot;,&quot;’&quot;,&quot;“&quot;,&quot;”&quot;)
+Common.CurlyQuotes(&quot;‘&quot;,ChApostrophe,&quot;“&quot;,&quot;”&quot;)
 
 End Sub
 

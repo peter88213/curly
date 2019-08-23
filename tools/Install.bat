@@ -26,8 +26,9 @@ REM change: 2019-08-15 v1.2.0: LibreOffice 6.x installation enabled; changed ger
 REM change: 2019-08-18 v1.2.1: Fixed typo in user interface
 REM change: 2019-08-20 v1.3.0: Introcuced exchange format for quotes. New behaviour of (en-GB) version.
 REM change: 2019-08-21 v1.4.0: Added swiss (de-CH) language support. Prepared french (fr-FR) support.
+REM change: 2019-08-23 v2.0.0: Refactored macro code and UI in order to faciliate localization.
 
-set _release=1.4.0
+set _release=2.0.0
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4

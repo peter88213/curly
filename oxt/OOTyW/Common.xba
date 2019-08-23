@@ -5,6 +5,32 @@
 &apos; Language independent part of the OOTyW macro library.
 &apos; ----------------------------------------------------------------------
 
+Option Explicit
+
+&apos; ----------------------------------------------------------------------
+&apos; Define quote substitutes for intermediate formatting
+&apos; ----------------------------------------------------------------------
+Const sChopen1 = &quot;┌&quot;
+Const sChClose1 = &quot;┐&quot;
+Const sChopen2 = &quot;└&quot;
+Const sChClose2 = &quot;┘&quot;
+Const sChApostrophe = &quot;│&quot;
+
+&apos; ----------------------------------------------------------------------
+&apos; Define characters for convenience
+&apos; ----------------------------------------------------------------------
+Const ChEnDash = &quot;–&quot;
+Const ChEmDash = &quot;—&quot;
+Const ChEllipsis = &quot;…&quot;
+Const ChApostrophe = &quot;’&quot;
+
+&apos; ----------------------------------------------------------------------
+&apos; Define colors for &quot;direct speech&quot; view
+&apos; ----------------------------------------------------------------------
+Const Black = 00000000
+Const Gray = 13421772
+Const DefaultColor = -1
+
 
 
 Sub Main
@@ -27,7 +53,7 @@ Dim AOldStr(1) As String
 Dim ANewStr(1) As String
 
 AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;#&quot;)
-ANewStr() = Array(&quot;$1’$2&quot;,&quot;’&quot;)
+ANewStr() = Array(&quot;$1&quot;+ChApostrophe+&quot;$2&quot;,ChApostrophe)
 
 sar(AOldStr,ANewStr,True)
 
@@ -44,7 +70,7 @@ Dim AOldStr(0) As String
 Dim ANewStr(0) As String
 
 AOldStr() = Array(&quot;...&quot;)
-ANewStr() = Array(&quot;…&quot;)
+ANewStr() = Array(ChEllipsis)
 
 sar(AOldStr,ANewStr,False)
 
@@ -61,7 +87,7 @@ Dim AOldStr(0) As String
 Dim ANewStr(0) As String
 
 AOldStr() = Array(&quot;--&quot;)
-ANewStr() = Array(&quot;–&quot;)
+ANewStr() = Array(ChEnDash)
 
 sar(AOldStr,ANewStr,False)
 
@@ -78,7 +104,7 @@ Dim AOldStr(0) As String
 Dim ANewStr(0) As String
 
 AOldStr() = Array(&quot;--&quot;)
-ANewStr() = Array(&quot;—&quot;)
+ANewStr() = Array(ChEmDash)
 
 sar(AOldStr,ANewStr,False)
 
@@ -96,8 +122,8 @@ Sub ProtectQM(ChOpen,ChClose)
 Dim AOldStr(3) As String
 Dim ANewStr(3) As String
 
-AOldStr() = Array(&quot; –&quot;+ChClose,ChOpen+&quot;– &quot;,&quot; …&quot;+ChClose,ChOpen+&quot;… &quot;)
-ANewStr() = Array(Chr(160)+&quot;–&quot;+ChClose,ChOpen+&quot;–&quot;+Chr(160),Chr(160)+&quot;…&quot;+ChClose,ChOpen+&quot;…&quot;+Chr(160))
+AOldStr() = Array(&quot; &quot;+ChEnDash+ChClose,ChOpen+ChEnDash+&quot; &quot;,&quot; &quot;+ChEllipsis+ChClose,ChOpen+ChEllipsis+&quot; &quot;)
+ANewStr() = Array(Chr(160)+ChEnDash+ChClose,ChOpen+ChEnDash+Chr(160),Chr(160)+ChEllipsis+ChClose,ChOpen+ChEllipsis+Chr(160))
 
 sar(AOldStr,ANewStr,False)
 
@@ -114,8 +140,8 @@ Sub UnprotectQM(ChOpen,ChClose)
 Dim AOldStr(5) As String
 Dim ANewStr(5) As String
 
-AOldStr() = Array(Chr(160)+&quot;–&quot;+ChClose,ChOpen+&quot;–&quot;+Chr(160),Chr(160)+&quot;…&quot;+ChClose,ChOpen+&quot;…&quot;+Chr(160),Chr(160)+&quot;--&quot;+ChClose,ChOpen+&quot;--&quot;+Chr(160))
-AnewStr() = Array(&quot; –&quot;+ChClose,ChOpen+&quot;– &quot;,&quot; …&quot;+ChClose,ChOpen+&quot;… &quot;,&quot; --&quot;+ChClose,ChOpen+&quot;-- &quot;)
+AOldStr() = Array(Chr(160)+ChEnDash+ChClose,ChOpen+ChEnDash+Chr(160),Chr(160)+ChEllipsis+ChClose,ChOpen+ChEllipsis+Chr(160),Chr(160)+&quot;--&quot;+ChClose,ChOpen+&quot;--&quot;+Chr(160))
+AnewStr() = Array(&quot; &quot;+ChEnDash+ChClose,ChOpen+ChEnDash+&quot; &quot;,&quot; &quot;+ChEllipsis+ChClose,ChOpen+ChEllipsis+&quot; &quot;,&quot; --&quot;+ChClose,ChOpen+&quot;-- &quot;)
 
 common.sar(AOldStr,ANewStr,False)
 
@@ -133,15 +159,8 @@ sub SubstitutePrimesI
 Dim AOldStr(7) As String
 Dim ANewStr(7) As String
 
-&apos; Define quote substitutes for intermediate formatting
-sChopen1 = &quot;┌&quot;
-sChClose1 = &quot;┐&quot;
-sChopen2 = &quot;└&quot;
-sChClose2 = &quot;┘&quot;
-sApostrophe = &quot;│&quot;
-
-AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,&quot;&apos;&quot;,&quot;^&quot;+CHR$(34),&quot; &quot;+CHR$(34),&quot;\(&quot;+CHR$(34),sChOpen2+CHR$(34),CHR$(34))
-ANewStr() = Array(&quot;$1&quot;+sApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
+AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,&quot;&apos;&quot;,&quot;^&quot;+Chr(34),&quot; &quot;+Chr(34),&quot;\(&quot;+Chr(34),sChOpen2+Chr(34),Chr(34))
+ANewStr() = Array(&quot;$1&quot;+sChApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
 
 sar(AOldStr,ANewStr,True)
 
@@ -158,15 +177,8 @@ sub SubstitutePrimesII
 Dim AOldStr(7) As String
 Dim ANewStr(7) As String
 
-&apos; Define quote substitutes for intermediate formatting
-sChopen1 = &quot;┌&quot;
-sChClose1 = &quot;┐&quot;
-sChopen2 = &quot;└&quot;
-sChClose2 = &quot;┘&quot;
-sApostrophe = &quot;│&quot;
-
-AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&quot;+CHR$(34),&quot; &quot;+CHR$(34),&quot;\(&quot;+CHR$(34),CHR$(34),&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,sChOpen2+&quot;&apos;&quot;,&quot;&apos;&quot;)
-ANewStr() = Array(&quot;$1&quot;+sApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
+AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&quot;+Chr(34),&quot; &quot;+Chr(34),&quot;\(&quot;+Chr(34),Chr(34),&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,sChOpen2+&quot;&apos;&quot;,&quot;&apos;&quot;)
+ANewStr() = Array(&quot;$1&quot;+sChApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
 
 sar(AOldStr,ANewStr,True)
 
@@ -182,15 +194,8 @@ sub SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 Dim AOldStr(5) As String
 Dim ANewStr(5) As String
 
-&apos; Define quote substitutes for intermediate formatting
-sChopen1 = &quot;┌&quot;
-sChClose1 = &quot;┐&quot;
-sChopen2 = &quot;└&quot;
-sChClose2 = &quot;┘&quot;
-sApostrophe = &quot;│&quot;
-
-AOldStr() = Array(&quot;([:alpha:])’([:alpha:])&quot;,ChOpen1,ChClose1,ChOpen2,ChClose2,&quot;’&quot;)
-ANewStr() = Array(&quot;$1&quot;+sApostrophe+&quot;$2&quot;,sChOpen1,sChClose1,sChOpen2,sChClose2,sApostrophe)
+AOldStr() = Array(&quot;([:alpha:])&quot;+ChApostrophe+&quot;([:alpha:])&quot;,ChOpen1,ChClose1,ChOpen2,ChClose2,ChApostrophe)
+ANewStr() = Array(&quot;$1&quot;+sChApostrophe+&quot;$2&quot;,sChOpen1,sChClose1,sChOpen2,sChClose2,sChApostrophe)
 
 sar(AOldStr,ANewStr,True)
 
@@ -207,15 +212,8 @@ sub CurlyQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 Dim AOldStr(4) As String
 Dim ANewStr(4) As String
 
-&apos; Define &quot;neutral&quot; Quotes for intermediate formatting
-sChopen1 = &quot;┌&quot;
-sChClose1 = &quot;┐&quot;
-sChopen2 = &quot;└&quot;
-sChClose2 = &quot;┘&quot;
-sApostrophe = &quot;│&quot;
-
-AOldStr() = Array(sApostrophe,sChOpen1,sChClose1,sChOpen2,sChClose2)
-ANewStr() = Array(&quot;’&quot;,ChOpen1,ChClose1,ChOpen2,ChClose2)
+AOldStr() = Array(sChApostrophe,sChOpen1,sChClose1,sChOpen2,sChClose2)
+ANewStr() = Array(ChApostrophe,ChOpen1,ChClose1,ChOpen2,ChClose2)
 
 sar(AOldStr,ANewStr,False)
 
@@ -236,12 +234,6 @@ dim document   as object
 dim dispatcher as object
 dim oSaveCursor as object
 dim oViewCursor as object
-
-&apos; ----------------------------------------------------------------------
-&apos; define constants
-
-Black = 00000000
-Gray = 13421772
 
 document   = ThisComponent.CurrentController.Frame
 dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
@@ -342,10 +334,6 @@ dim dispatcher as object
 dim oSaveCursor as object
 dim oViewCursor as object
 
-&apos; ----------------------------------------------------------------------
-&apos; define constants
-
-DefaultColor = -1
 
 &apos; ----------------------------------------------------------------------
 &apos; get access to the document

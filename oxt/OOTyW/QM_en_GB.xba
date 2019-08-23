@@ -5,6 +5,23 @@
 &apos; Do conversions according to BE conventions.
 &apos; ----------------------------------------------------------------------
 
+Option Explicit
+
+&apos; ----------------------------------------------------------------------
+&apos; Define language specific normal quotes
+&apos; ----------------------------------------------------------------------
+&apos; ChOpen/Close1 is for speech within speech
+&apos; ChOpen/Close2 is for initial quoting
+Const ChOpen1 = &quot;“&quot;
+Const ChClose1 = &quot;”&quot;
+Const ChOpen2 = &quot;‘&quot;
+Const ChClose2 = &quot;’&quot;
+
+&apos; ----------------------------------------------------------------------
+&apos; Define regular expression for direct speech
+&apos; ----------------------------------------------------------------------
+Const SpeechRegex = &quot;‘[^‘]+’&quot;
+
 
 
 sub Main
@@ -27,7 +44,7 @@ sub SmartQuotes
 &apos; ----------------------------------------------------------------------
 
 Common.SubstitutePrimesI
-Common.CurlyQuotes(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
+Common.CurlyQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 
 end sub
 
@@ -38,7 +55,7 @@ Sub TypewriterView
 &apos; Go back to &quot;typewriter&quot; style.
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
+Common.SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 Revert.PrimeI
 Revert.Ellipsis
 Revert.Dash
@@ -53,7 +70,7 @@ Sub SubstituteQuotes
 &apos; Exchange format for language conversion.
 &apos; ----------------------------------------------------------------------
 
-Common.SubstituteQuotes(&quot;“&quot;,&quot;”&quot;,&quot;‘&quot;,&quot;’&quot;)
+Common.SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 
 End Sub
 
@@ -64,7 +81,7 @@ Sub ProtectQM
 &apos; Prevent hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
-Common.ProtectQM(&quot;‘&quot;,&quot;’&quot;)
+Common.ProtectQM(ChOpen2,ChClose2)
 
 End Sub
 
@@ -75,7 +92,7 @@ Sub UnprotectQM
 &apos; Allow hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
-Common.UnprotectQM(&quot;‘&quot;,&quot;’&quot;)
+Common.UnprotectQM(ChOpen2,ChClose2)
 
 End Sub
 
@@ -88,18 +105,12 @@ sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
 &apos; Hide apostrophes not to be confused with quotes
 
-Dim AOldStr(0) As String
-Dim ANewStr(0) As String
-
-AOldStr() = Array(&quot;([:alpha:])’([:alpha:])&quot;)
-ANewStr() = Array(&quot;$1&apos;$2&quot;)
-
-sar(AOldStr,ANewStr,True)
+Revert.Apostrophe
 
 &apos; ----------------------------------------------------------------------
 &apos; colorize non-direct-speech 
 
-Common.ShowDirectSpeech(&quot;‘[^‘]+’&quot;)
+Common.ShowDirectSpeech(SpeechRegex)
 
 &apos; ----------------------------------------------------------------------
 &apos; Restore apostrophes
