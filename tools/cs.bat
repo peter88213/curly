@@ -57,11 +57,11 @@ set _file=%_root%\oxt\OOTyW-%_release%.oxt
 set _dest=%_target%\program\
 call :copyFile
 
-set _file=%_root%\oxt\OOTyW-A-%_release%.oxt
+set _file=%_root%\oxt\OOTyW-%_release%.oxt
 set _dest=%_target%\program\
 call :copyFile
 
-set _file=%_root%\oxt\OOTyW-L-%_release%.oxt
+set _file=%_root%\oxt\OOTyW-%_release%.oxt
 set _dest=%_target%\program\
 call :copyFile
 

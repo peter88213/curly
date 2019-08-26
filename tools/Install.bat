@@ -59,14 +59,14 @@ goto end
 :OpenOffice4-Win64
 set _writer=%_OpenOffice4_w64%
 set _user=%USERPROFILE%\%_OpenOffice4_Userprofile%
-set _ext=OOTyW-A-%_release%.oxt
+set _ext=OOTyW-%_release%.oxt
 echo OpenOffice 4.x - Windows (64 bit)
 goto settings_done
 
 :OpenOffice4-Win32
 set _writer=%_OpenOffice4_w32%
 set _user=%USERPROFILE%\%_OpenOffice4_Userprofile%
-set _ext=OOTyW-A-%_release%.oxt
+set _ext=OOTyW-%_release%.oxt
 echo OpenOffice 4.x - Windows (32 bit)
 goto settings_done
 
@@ -87,14 +87,14 @@ goto settings_done
 :LibreOffice6-Win64
 set _writer=%_LibreOffice6_w64%
 set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
-set _ext=OOTyW-L-%_release%.oxt
+set _ext=OOTyW-%_release%.oxt
 echo LibreOffice 6.x
 goto settings_done
 
 :LibreOffice6-Win32
 set _writer=%_LibreOffice6_w32%
 set _user=%USERPROFILE%\%_LibreOffice_Userprofile%
-set _ext=OOTyW-L-%_release%.oxt
+set _ext=OOTyW-%_release%.oxt
 echo LibreOffice 6.x
 goto settings_done
 
