@@ -7,6 +7,8 @@
 
 Option Explicit
 
+Dim isInitialized as boolean
+
 &apos; ----------------------------------------------------------------------
 &apos; Define language specific normal quotes
 &apos; ----------------------------------------------------------------------
@@ -24,10 +26,24 @@ Const SpeechRegex = &quot;‘[^‘]+’&quot;
 
 
 
+sub Init
+&apos; ----------------------------------------------------------------------
+&apos; Load OOTyW basis library
+&apos; ----------------------------------------------------------------------
+
+GlobalScope.BasicLibraries.loadLibrary(&quot;OOTyW&quot;)
+isInitialized = True
+
+end sub
+
+
+
 sub Main
 &apos; ----------------------------------------------------------------------
 &apos; Replace keyboard glyphs by typographical correct glyphs.
 &apos; ----------------------------------------------------------------------
+
+if (isInitialized = False) then Init
 
 Common.Em_dash
 Common.Main
@@ -43,6 +59,8 @@ sub SmartQuotes
 &apos; Replace primes by BE style quotation marks.
 &apos; ----------------------------------------------------------------------
 
+if (isInitialized = False) then Init
+
 Common.SubstitutePrimesI
 Common.CurlyQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 
@@ -54,6 +72,8 @@ Sub TypewriterView
 &apos; ----------------------------------------------------------------------
 &apos; Go back to &quot;typewriter&quot; style.
 &apos; ----------------------------------------------------------------------
+
+if (isInitialized = False) then Init
 
 Common.SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 Revert.PrimeI
@@ -70,6 +90,8 @@ Sub SubstituteQuotes
 &apos; Exchange format for language conversion.
 &apos; ----------------------------------------------------------------------
 
+if (isInitialized = False) then Init
+
 Common.SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 
 End Sub
@@ -80,6 +102,8 @@ Sub ProtectQM
 &apos; ----------------------------------------------------------------------
 &apos; Prevent hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
+
+if (isInitialized = False) then Init
 
 Common.ProtectQM(ChOpen2,ChClose2)
 
@@ -92,6 +116,8 @@ Sub UnprotectQM
 &apos; Allow hyphenation around quotation marks.
 &apos; ----------------------------------------------------------------------
 
+if (isInitialized = False) then Init
+
 Common.UnprotectQM(ChOpen2,ChClose2)
 
 End Sub
@@ -101,6 +127,8 @@ sub ShowDirectSpeech
 &apos; ----------------------------------------------------------------------
 &apos; Gray-out all but direct speech.
 &apos; ----------------------------------------------------------------------
+
+if (isInitialized = False) then Init
 
 &apos; ----------------------------------------------------------------------
 &apos; Hide apostrophes not to be confused with quotes
@@ -125,6 +153,8 @@ sub StandardView
 &apos; ----------------------------------------------------------------------
 &apos; Set all text to default color.
 &apos; ----------------------------------------------------------------------
+
+if (isInitialized = False) then Init
 
 Common.StandardView
 
