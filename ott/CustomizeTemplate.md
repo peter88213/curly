@@ -2,10 +2,10 @@
 
 ## Properties
 
-21 x 29,7 cm (A4) paper size
-10 p Arial
-single-spaced
-Document language: de-DE
+* 21 x 29,7 cm (A4) paper size
+* 10 p Arial
+* single-spaced
+* Document language: de-DE
 
 ## How to localize/customize your template
 
