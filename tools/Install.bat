@@ -104,12 +104,6 @@ echo Installing OpenOffice extension %_ext% ...
 
 "%_writer%\program\unopkg" add -f program\%_ext%
 
-echo Copying template to %_user%\template ...
-
-if not exist "%_user%\template" mkdir "%_user%\template"
-copy /-y program\yWriter.ott "%_user%\template"
-
-
 echo -----------------------------------------------------------------
 echo #
 echo # Installation of OOTyW v%_release% finished.

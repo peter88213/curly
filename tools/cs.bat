@@ -65,14 +65,6 @@ set _file=%_root%\oxt\OOTyW-%_release%.oxt
 set _dest=%_target%\program\
 call :copyFile
 
-set _file=%_source%\ott\yWriter.ott
-set _dest=%_target%\program\
-call :copyFile
-
-set _file=%_source%\ott\CustomizeTemplate.md
-set _dest=%_target%\
-call :copyFile
-
 set _file=%_root%\LICENSE
 set _dest=%_target%\
 call :copyFile

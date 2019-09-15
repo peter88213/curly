@@ -93,12 +93,6 @@ echo Removing OpenOffice extension %_ext% ...
 
 "%_writer%\program\unopkg" remove -f %_ext%
 
-echo Deleting template in %_user%\template (on confirmation only) ...
-
-set _file="%_user%\template\yWriter.ott"
-if exist %_file% del /p %_file%
-
-
 echo -----------------------------------------------------------------
 echo #
 echo # OOTyW v%_release% is removed from your PC.
