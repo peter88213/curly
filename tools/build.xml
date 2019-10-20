@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build" basedir="."> 
+	<target name="collect setup">
+		  <exec executable="cmd">
+		    	<arg value="/c"/>
+		    	<arg value="cs.bat"/>
+		  </exec>
+	</target>
+</project>
