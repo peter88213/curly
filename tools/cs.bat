@@ -24,14 +24,11 @@ rem --------------------------------------------------------
 set _source=%_root%\
 set _target=%_root%\build\OOTyW_v%_release%
 
+if exist %_target% rd /s /q %_target%
 mkdir %_target%
-del /s /q %_target%
-
 mkdir %_target%\program
-del /s /q %_target%\program
-
 mkdir %_target%\add-on
-del /s /q %_target%\add-on
+
 copy %_source%\add-on\*.* %_target%\add-on\
 
 rem --------------------------------------------------------
