@@ -11,7 +11,7 @@ set _release=2.0.0
 
 set _project=OOTyW
 
-set _root=..
+set _root=..\
 
 rem ********************************************************
 rem English/international release
@@ -21,26 +21,33 @@ rem --------------------------------------------------------
 rem Set up directory structure
 rem --------------------------------------------------------
 
-set _source=%_root%\
-set _target=%_root%\build\OOTyW_v%_release%
+
+set _target=%_root%build\OOTyW_v%_release%
 
 if exist %_target% rd /s /q %_target%
 mkdir %_target%
 mkdir %_target%\program
 mkdir %_target%\add-on
 
-copy %_source%\add-on\*.* %_target%\add-on\
+copy %_root%src\add-on\*.* %_target%\add-on\
 
 rem --------------------------------------------------------
-rem Generate english README file with release info
+rem Generate VERSION file with release info
 rem --------------------------------------------------------
 
-echo # OOTyW (OpenOffice typography tools for yWriter users) v%_release%>%_target%\README.txt
-echo For further information see https://github.com/peter88213/OOTyW/wiki/>>%_target%\README.txt
+echo v%_release%>%_target%\VERSION
 
 rem --------------------------------------------------------
-rem Copy language dependent release items 
+rem Copy release items 
 rem --------------------------------------------------------
+
+set _file=%_root%README.md
+set _dest=%_target%\
+call :copyFile
+
+set _file=%_root%LIESMICH.md
+set _dest=%_target%\
+call :copyFile
 
 set _file=%_root%\tools\Install.bat
 set _dest=%_target%\

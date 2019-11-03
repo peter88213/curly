@@ -9,24 +9,11 @@ REM copyright: (c) 2019, Peter Triesberger
 REM 
 REM note: This script is to be executed manually.
 REM 
-REM precondition: OOTyW is installed.
-REM precondition: OpenOffice.org 3.x or Apache OpenOffice 4.x is installed.
-REM postcondition: Previously auto-installed items of OOTyW are removed.
-REM postcondition: The template remains, if user wants it.
+REM Preconditions:
+REM * OpenOffice.org 3.x or Apache OpenOffice 4.x is installed.
 REM 
-REM since: 2018-10-31
-REM change: 2018-11-04 v1.1.0: Added BE (en-GB) support, EM-dash
-REM change: 2018-11-04 v1.1.1: Changed order of subroutine calls
-REM change: 2018-11-18 v1.1.2: Fixed bug in SmartQuotes macro
-REM change: 2018-11-18 v1.1.3: Optimized SmartQuotes macro
-REM change: 2018-11-19 v1.1.4: Improved german and BE "view direct speech" feature
-REM change: 2019-01-22 v1.1.5: Fixed bug in SmartQuotes macro
-REM change: 2019-05-26 v1.1.6: Replaced LibreOffice 5 references by LibreOffice 6 references
-REM change: 2019-08-15 v1.2.0: LibreOffice 6.x installation enabled; changed german default quotes to "Gaensefuesschen"
-REM change: 2019-08-18 v1.2.1: Fixed typo in user interface
-REM change: 2019-08-20 v1.3.0: Introcuced exchange format for quotes. New behaviour of (en-GB) version.
-REM change: 2019-08-21 v1.4.0: Added swiss (de-CH) language support. Prepared french (fr-FR) support.
-REM change: 2019-08-23 v2.0.0: Refactored macro code and UI in order to faciliate localization.
+REM Postconditions:
+REM * An Open/LibreOffice extension containing the language-independent part is installed.
 
 set _release=2.0.0
 
