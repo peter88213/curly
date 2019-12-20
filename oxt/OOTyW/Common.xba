@@ -32,7 +32,6 @@ Const Gray = 13421772
 Const DefaultColor = -1
 
 
-
 Sub Main
 &apos; ----------------------------------------------------------------------
 &apos; Smart apostrophes and ellipses.

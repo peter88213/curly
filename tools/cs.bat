@@ -7,7 +7,7 @@ REM see: https://github.com/peter88213/OOTyW
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
 REM copyright: (c) 2019, Peter Triesberger
 
-set _release=2.0.0
+set _release=2.0.1
 
 set _project=OOTyW
 
