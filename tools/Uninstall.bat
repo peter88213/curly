@@ -16,7 +16,7 @@ REM
 REM Postconditions:
 REM * The OOTyW Open/LibreOffice extension is removed.
 
-set _release=2.0.1
+set _release=2.0.2
 
 set _OpenOffice4_w64=c:\Program Files (x86)\OpenOffice 4
 set _OpenOffice4_w32=c:\Program Files\OpenOffice 4
