@@ -15,13 +15,16 @@ Syntax: delcol.py <ODT file to modify>
 @since: 2019-08-02
 
 '''
-import sys, zipfile, os
+import sys
+import zipfile
+import os
 
-replaceList =[
+replaceList = [
     'fo:color="#cccccc"||',
     'fo:color="#000000"||',
     'style:use-window-font-color="true"||',
-    ]
+]
+
 
 def searchAndReplace(processData, replaceList):
     '''
@@ -31,47 +34,47 @@ def searchAndReplace(processData, replaceList):
         Structure of each list element: "<search item>|<replacement item>|" 
         The replacement item can be empty.  
     @return: Modified string
-    '''   
+    '''
     FindCount = 0
     for line in replaceList:
         replaceItem = line.split("|")
-        if (processData.find(replaceItem[0]) != -1): 
-            processData = processData.replace(replaceItem[0],replaceItem[1])
+        if (processData.find(replaceItem[0]) != -1):
+            processData = processData.replace(replaceItem[0], replaceItem[1])
             FindCount += 1
 #            print(replaceItem[0]+" - ",FindCount)
     if (FindCount is 0):
         return("")
-    else: 
+    else:
         return(processData)
 
+
 if __name__ == '__main__':
-    xmldoc ="content.xml"
+    xmldoc = "content.xml"
     odtdoc = sys.argv[1]
 #    print(odtdoc)
     str = ""
     try:
-        with zipfile.ZipFile(odtdoc,'r') as myzip:
+        with zipfile.ZipFile(odtdoc, 'r') as myzip:
             myzip.extract(xmldoc)
             myzip.close
 #        print(xmldoc+" extracted ...")
     except:
-        print("Syntax: delcol.py <ODT file to modify>")
-        exit(1)
-    try: 
-        myTextFile = open(xmldoc,'r',encoding = 'utf-8')
+        sys.exit('Syntax: delcol.py <ODT file to modify>')
+
+    try:
+        myTextFile = open(xmldoc, 'r', encoding='utf-8')
 #        print(xmldoc+" opened ...")
         str = myTextFile.read()
         str = searchAndReplace(str, replaceList)
-    
-    finally: 
+
+    finally:
         myTextFile.close()
 #        print(xmldoc+" closed ...")
         os.remove(xmldoc)
 #        print(xmldoc+" deleted ...")
 
-   
     if (str != ""):
-        myTextFile = open(xmldoc,'w',encoding = 'utf-8')
+        myTextFile = open(xmldoc, 'w', encoding='utf-8')
         myTextFile.write(str)
         myTextFile.close()
 #        print(xmldoc+" written ...")
