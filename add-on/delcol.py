@@ -1,19 +1,14 @@
 '''
-
 delcol.py 
 
-@summary: Delete some hard coded text color information from an ODT document (command line)
+Delete some hard coded text color information from an ODT document (command line)
 Extracts and modifies "content.xml"
 
 Syntax: delcol.py <ODT file to modify>
 
-@author: Peter Triesberger
-@see: https://github.com/peter88213/OOTyW
-@version: v0.0.1
-@license: The MIT License (https://opensource.org/licenses/mit-license.php)
-@copyright: (c) 2019, Peter Triesberger
-@since: 2019-08-02
-
+Copyright (c) 2019, peter88213
+For further information see https://github.com/peter88213/yW2OO
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 '''
 import sys
 import zipfile

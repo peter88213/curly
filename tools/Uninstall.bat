@@ -2,10 +2,10 @@
 REM
 REM summary: Removes the OOTyW software package.
 REM 
-REM author: Peter Triesberger
+REM author: peter88213
 REM see: https://github.com/peter88213/OOTyW
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
-REM copyright: (c) 2019, Peter Triesberger
+REM copyright: (c) 2019, peter88213
 REM 
 REM note: This script is to be executed manually.
 REM 

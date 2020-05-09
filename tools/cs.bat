@@ -2,10 +2,10 @@ rem @echo off
 REM cs.bat
 REM summary: Collects everything for a OOTyW release
 REM          and puts it into localized setup directories to be zipped.
-REM author: Peter Triesberger
+REM author: peter88213
 REM see: https://github.com/peter88213/OOTyW
 REM license: The MIT License (https://opensource.org/licenses/mit-license.php)
-REM copyright: (c) 2019, Peter Triesberger
+REM copyright: (c) 2019, peter88213
 
 set _release=2.0.2
 
@@ -42,10 +42,6 @@ rem Copy release items
 rem --------------------------------------------------------
 
 set _file=%_root%README.md
-set _dest=%_target%\
-call :copyFile
-
-set _file=%_root%LIESMICH.md
 set _dest=%_target%\
 call :copyFile
 
