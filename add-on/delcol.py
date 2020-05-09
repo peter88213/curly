@@ -6,7 +6,7 @@ Extracts and modifies "content.xml"
 
 Syntax: delcol.py <ODT file to modify>
 
-Copyright (c) 2019, peter88213
+Copyright (c) 2020, peter88213
 For further information see https://github.com/peter88213/yW2OO
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 '''
