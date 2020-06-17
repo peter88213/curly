@@ -1,55 +1,50 @@
-# OOTyW (OpenOffice typography tools for yWriter users)
+# "curly quotes" conversion for LibreOffice and OpenOffice
+
+![Screenshot: "curly" menu](https://raw.githubusercontent.com/peter88213/curly/master/docs/Screenshots/Menu-en.png)
 
 ## Features
 
 * _Smart quotes_ macros.
 * _Search and replace_ macros for apostrophes and dashes.
 * Revert to keyboard characters.
+* Extensions are also available for de-DE, de-CH, en-US, en-GB
+* Convert from one language to another via exchange format.
 * Menu and toolbar with buttons.
-* Template for OpenOffice as yWriter _external RTF editor_.
 * Dialog view to identify direct speech.
 
-![Screenshot: OOTyW menu in OpenOffice Writer](https://raw.githubusercontent.com/peter88213/OOTyW/master/docs/Screenshots/UserMenu-en.png)
+![Screenshot: Show direct speech in OpenOffice Writer](https://raw.githubusercontent.com/peter88213/curly/master/docs/Screenshots/DirectSpeech-en.png)
 
-For more information see [Wiki (english)](https://github.com/peter88213/OOTyW/wiki)
+## Download and install
 
-## Download
+[Download page](https://github.com/peter88213/curly/releases/latest)
 
-The OOTyW Software comes as zipfiles. 
+* Install it using the OpenOffice/Libreoffice extension manager.
+* After installation (and Office restart) you find a new submenu for each language version in the "Format" menu.
+* Optionally, you can dock a toolbar for your convenience. If you don't need the toolbar (e.g. because it's not your first language), just close it.
+* If no additional submenu shows up in the "Format" menu, please look in the "Tools > Extensions" menu.
 
-You need to download
-* The **OOTYW** installation (basis library) containing most of the algorithms suitable for all languages.
-* At least one **OOTyW_xx-YY** installation (language pack) containing the user interface and language specific macro calls.
+## System requirements
 
-[Download page](https://github.com/peter88213/OOTyW/releases/latest)
+* __OpenOffice.org 3.x or Apache OpenOffice 4.x or LibreOffice 6.x__
+* __Java__ (OpenOffice needs it for macro execution)
 
-## How to install
+## Conventions
 
-1. Terminate OpenOffice before installation.
+* In order to avoid confusion with single quotes, it is advised to substitute leading or trailing apostrophes by a number sign "#" when typing.
+* Number signs "#" will be replaced with apostrophes when converting from "typewriter style" to a "language style".
+* When converting from a "language style" to "typewriter style", apostrophes might be replaced automatically with number signs "#". 
+* In order to avoid confusion with hyphens, it is advised to substitute dashes by double hyphens "--" when typing.
+* Double hyphens "--" will be replaced with dashes when converting from "typewriter style" to a "language style".
+* When converting from a "language style" to "typewriter style", dashes might be replaced automatically with double hyphens "--". 
+* "Dialog view" is only possible in a "language style".
+* When going back from "Dialog view" to "normal view", the whole document's font colour is set to black. 
+* You can install several language variants in parallel. Use the exchange format to convert quotation marks between different languages.
+* Conversion th the exchange format is only possible from a "language style".
 
-2. Download and unzip the basis library `OOTyW_<version number>.zip` within your user profile.
+## Credits
 
-3. Move into the `OOTyW_<version number>` folder and run `Install.bat` (double click). This will copy the template file to the right place and install the Office extension.
+[OpenOffice Extension Compiler](https://wiki.openoffice.org/wiki/Extensions_Packager#Extension_Compiler) by Bernard Marcelly.
 
-4. Download and unzip the language pack of your choice `OOTyW_xx-YY_<version number>.zip`.
+## Legal
 
-5. Move into the `OOTyW_xx-YY_<version number>` folder and run `Install.bat` (double click). This will install the Office extension.
-
-6. Repeat the steps 4 and 5 for any other supported language variant you wish to install.
-
-7. Restart OpenOffice. You will see an undocked toolbar in a small window for each installed language pack. 
-
-8. Dock the toolbar of your main language and close the others.
-
-9. Open `yWriter.ott` (Menu __Files > Templates > Edit ...__ and edit the _Default_ paragraph style. Set your preferred yWriter default font, line spacing etc. 
-
-
-## How to use
-
-* Open the __Tools > Add-ons__ menu. There you will find __OOTyW__ submenus, one for each supported language.
-* You will find frequently used commands in the button toolbars.
-
-
-## How to uninstall
-
-Move into the `OOTyW_<version number>` folder and run `Uninstall.bat` (double click). 
+This extension is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
