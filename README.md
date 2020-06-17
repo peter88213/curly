@@ -7,7 +7,7 @@
 * _Smart quotes_ macros.
 * _Search and replace_ macros for apostrophes and dashes.
 * Revert to keyboard characters.
-* Extensions are also available for de-DE, de-CH, en-US, en-GB
+* Extensions are available for de-DE, de-CH, en-US, en-GB, fr-FR.
 * Convert from one language to another via exchange format.
 * Menu and toolbar with buttons.
 * Dialog view to identify direct speech.
