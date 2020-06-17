@@ -63,6 +63,6 @@
 
 [OpenOffice Extension Compiler](https://wiki.openoffice.org/wiki/Extensions_Packager#Extension_Compiler) by Bernard Marcelly.
 
-## Licence
+## License
 
 This extension is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
