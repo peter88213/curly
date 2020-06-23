@@ -155,11 +155,11 @@ sub SubstitutePrimesI
 &apos; Initial quotation is single (&apos;)
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(7) As String
-Dim ANewStr(7) As String
+Dim AOldStr(9) As String
+Dim ANewStr(9) As String
 
-AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,&quot;&apos;&quot;,&quot;^&quot;+Chr(34),&quot; &quot;+Chr(34),&quot;\(&quot;+Chr(34),sChOpen2+Chr(34),Chr(34))
-ANewStr() = Array(&quot;$1&quot;+sChApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
+AOldStr() = Array(&quot;(\n)&apos;&quot;,&quot;(\n)&quot;+Chr(34),&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,&quot;&apos;&quot;,&quot;^&quot;+Chr(34),&quot; &quot;+Chr(34),&quot;\(&quot;+Chr(34),sChOpen2+Chr(34),Chr(34))
+ANewStr() = Array(&quot;$1&quot;+sChOpen2,&quot;$1&quot;+sChOpen1,&quot;$1&quot;+sChApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
 
 sar(AOldStr,ANewStr,True)
 
@@ -173,11 +173,11 @@ sub SubstitutePrimesII
 &apos; Initial quotation is double (&quot;)
 &apos; ----------------------------------------------------------------------
 
-Dim AOldStr(7) As String
-Dim ANewStr(7) As String
+Dim AOldStr(9) As String
+Dim ANewStr(9) As String
 
-AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&quot;+Chr(34),&quot; &quot;+Chr(34),&quot;\(&quot;+Chr(34),Chr(34),&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,sChOpen2+&quot;&apos;&quot;,&quot;&apos;&quot;)
-ANewStr() = Array(&quot;$1&quot;+sChApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
+AOldStr() = Array(&quot;(\n)&quot;+Chr(34),&quot;(\n)&apos;&quot;,&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;^&quot;+Chr(34),&quot; &quot;+Chr(34),&quot;\(&quot;+Chr(34),Chr(34),&quot;^&apos;&quot;,&quot; &apos;&quot;,&quot;\(&apos;&quot;,sChOpen2+&quot;&apos;&quot;,&quot;&apos;&quot;)
+ANewStr() = Array(&quot;$1&quot;+sChOpen2,&quot;$1&quot;+sChOpen1,&quot;$1&quot;+sChApostrophe+&quot;$2&quot;,sChOpen2,&quot; &quot;+sChOpen2,&quot;(&quot;+sChOpen2,sChClose2,sChOpen1,&quot; &quot;+sChOpen1,&quot;(&quot;+sChOpen1,sChOpen2+sChOpen1,sChClose1)
 
 sar(AOldStr,ANewStr,True)
 
