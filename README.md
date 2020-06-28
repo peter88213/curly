@@ -2,7 +2,7 @@
 
 Other languages: [de-DE](https://github.com/peter88213/curly-de-DE) | [de-CH](https://github.com/peter88213/curly-de-CH) | [fr-FR](https://github.com/peter88213/curly-fr-FR)
 
-![Screenshot: "curly" menu](https://raw.githubusercontent.com/peter88213/curly/master/docs/Screenshots/Menu-en.png)
+![Screenshot: "curly" menu](https://raw.githubusercontent.com/peter88213/curly/master/docs/Screenshots/Menu-ae.png)
 
 ## Features
 
@@ -20,7 +20,7 @@ Other languages: [de-DE](https://github.com/peter88213/curly-de-DE) | [de-CH](ht
 
 * Dialog view to identify direct speech.
 
-![Screenshot: Show direct speech in OpenOffice Writer](https://raw.githubusercontent.com/peter88213/curly/master/docs/Screenshots/DirectSpeech-en.png)
+![Screenshot: Show direct speech in OpenOffice Writer](https://raw.githubusercontent.com/peter88213/curly/master/docs/Screenshots/DirectSpeech-ae.png)
 
 ## Download and install
 
