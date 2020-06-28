@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+    <meta charset="utf-8" />
+    <title>Help</title>
+    <style type='text/css'>
+    <!--
+    h1, h2, h3 {font-family: sans-serif;}
+    h1, h2 {color: cornflowerblue;}
+    h3 {font-style: italic; font-size: 1em;}
+    em, code {color: maroon;}
+    -->
+    </style>
+</head>
+<body>
