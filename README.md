@@ -41,25 +41,39 @@ Other languages: [de-DE](https://github.com/peter88213/curly-de-DE) | [de-CH](ht
 
 ## Conventions
 
-* In order to avoid confusion with single quotes, it is advised to substitute leading or trailing apostrophes by a number sign "#" when typing.
+### Definitions
 
-* Number signs "#" will be replaced with apostrophes when converting from "typewriter style" to a "language style".
+* _Typewriter style_ : The text consists of the characters of the typewriter keyboard.
 
-* When converting from a "language style" to "typewriter style", apostrophes might be replaced automatically with number signs "#". 
+* _Language style_ : The text contains typographical characters according to country-specific punctuation rules.
 
-* In order to avoid confusion with hyphens, it is advised to substitute dashes by double hyphens "--" when typing.
+### Apostrophes
 
-* Double hyphens "--" will be replaced with dashes when converting from "typewriter style" to a "language style".
+* In order to avoid confusion with single quotes, it is advised to substitute leading or trailing apostrophes by a number sign (`#`) when typing.
 
-* When converting from a "language style" to "typewriter style", dashes might be replaced automatically with double hyphens "--". 
+* Number signs (`#`) will be replaced with apostrophes when converting from  _typewriter style_  to a  _language style_.
 
-* "Dialog view" is only possible in a "language style".
+* When converting from a  _language style_  to  _typewriter style_, apostrophes might be replaced automatically with number signs (`#`). 
 
-* When going back from "Dialog view" to "normal view", the whole document's font colour is set to black. 
+### Dashes
+
+* In order to avoid confusion with hyphens, it is advised to substitute dashes by double hyphens (`--`) when typing.
+
+* Double hyphens (`--`) will be replaced with dashes when converting from  _typewriter style_  to a  _language style_.
+
+* When converting from a  _language style_  to  _typewriter style_, dashes might be replaced automatically with double hyphens (`--`). 
+
+### Dialog view
+
+*  _Dialog view_  is only possible in a  _language style_.
+
+* When going back from  _Dialog view_  to  _normal view_, the whole document's font colour is set to black. 
+
+### Other languages
 
 * You can install several language variants in parallel. Use the exchange format to convert quotation marks between different languages.
 
-* Conversion th the exchange format is only possible from a "language style".
+* Conversion th the exchange format is only possible from a  _language style_.
 
 ## Credits
 
