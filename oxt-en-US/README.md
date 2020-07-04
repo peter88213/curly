@@ -1,7 +1,5 @@
 # "Curly quotes" conversion for LibreOffice and OpenOffice
 
-Other languages: [de-DE](https://github.com/peter88213/curly/tree/master/oxt-de-DE) | [de-CH](https://github.com/peter88213/curly/tree/master/oxt-de-CH) | [fr-FR](https://github.com/peter88213/curly/tree/master/oxt-fr-FR)
-
 ![Screenshot: "curly" menu](https://raw.githubusercontent.com/peter88213/curly/master/docs/Screenshots/Menu-ae.png)
 
 ## Features
@@ -28,11 +26,11 @@ Other languages: [de-DE](https://github.com/peter88213/curly/tree/master/oxt-de-
 
 * Install it using the OpenOffice/Libreoffice extension manager.
 
-* After installation (and Office restart) you find a new submenu for each language version in the "Format" menu.
+* After installation (and Office restart) you find a new submenu for each language version in the *Format* menu.
 
 * Optionally, you can dock a toolbar for your convenience. If you don't need the toolbar (e.g. because it's not your first language), just close it.
 
-* If no additional submenu shows up in the "Format" menu, please look in the "Tools > Extensions" menu.
+* If no additional submenu shows up in the *Format* menu, please look in the *Tools > Extensions* menu.
 
 ## System requirements
 
