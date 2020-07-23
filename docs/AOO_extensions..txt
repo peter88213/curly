@@ -1,0 +1,18 @@
+Smart quotes, typographical apostrophes, ellipses and so on. 
+Adds a toolbar and a submenu in the "Format" menu.
+
+Features
+
+* "Smart quotes" macros.
+* Find and replace macros for apostrophes and dashes.
+* Revert to keyboard characters.
+* Extensions are available for de-DE, de-CH, en-US, en-GB, fr-FR.
+* Convert from one language to another via exchange format.
+* Menu and toolbar with buttons.
+* Dialog view to identify direct speech.
+
+NOTE: 
+The releases below are for Apache OpenOffice 4.x.
+Variants for OpenOffice 3.x and for LibreOffice 6.x can be found here:
+https://github.com/peter88213/curly/releases/latest
+

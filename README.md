@@ -8,7 +8,7 @@ Other languages: [de-DE](https://github.com/peter88213/curly/tree/master/oxt-de-
 
 * _Smart quotes_ macros.
 
-* _Search and replace_ macros for apostrophes and dashes.
+* _Find and replace_ macros for apostrophes and dashes.
 
 * Revert to keyboard characters.
 

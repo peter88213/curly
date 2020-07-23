@@ -6,7 +6,7 @@
 
 * _Smart quotes_ macros.
 
-* _Search and replace_ macros for apostrophes and dashes.
+* _Find and replace_ macros for apostrophes and dashes.
 
 * Revert to keyboard characters.
 
