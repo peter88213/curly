@@ -1,0 +1,2 @@
+Typographische Anführungszeichen, Apostrophe, Ellipsen und so weiter.
+ Fügt eine Symbolleiste und ein Untermenü im Menü "Format" hinzu.
