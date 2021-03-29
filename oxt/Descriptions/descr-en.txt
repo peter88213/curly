@@ -1,0 +1,2 @@
+Smart quotes, typographical apostrophes, ellipses and so on. 
+ Adds a toolbar and a submenu in the "Format" menu.
