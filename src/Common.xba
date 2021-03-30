@@ -142,7 +142,7 @@ Dim ANewStr(5) As String
 AOldStr() = Array(Chr(160)+ChEnDash+ChClose,ChOpen+ChEnDash+Chr(160),Chr(160)+ChEllipsis+ChClose,ChOpen+ChEllipsis+Chr(160),Chr(160)+&quot;--&quot;+ChClose,ChOpen+&quot;--&quot;+Chr(160))
 AnewStr() = Array(&quot; &quot;+ChEnDash+ChClose,ChOpen+ChEnDash+&quot; &quot;,&quot; &quot;+ChEllipsis+ChClose,ChOpen+ChEllipsis+&quot; &quot;,&quot; --&quot;+ChClose,ChOpen+&quot;-- &quot;)
 
-common.sar(AOldStr,ANewStr,False)
+sar(AOldStr,ANewStr,False)
 
 End Sub
 
