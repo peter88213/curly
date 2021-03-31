@@ -15,4 +15,4 @@ Select a language:
 
 ## License
 
-This extensions are distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+The "curly" extensions are distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
