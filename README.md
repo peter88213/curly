@@ -3,15 +3,11 @@
 Smart quotes, typographical apostrophes, ellipses and so on. 
  Adds a toolbar and a submenu in the "Format" menu.
 
-You can install several language variants in parallel. Use the exchange format to convert quotation marks between different languages.
+* [More information](https://peter88213.github.io/curly)
 
-Select a language: 
+## Want to fork this project?
 
-* [American English (en-US)](https://peter88213.github.io/curly-en-US/)
-* [British English (en-GB)](https://peter88213.github.io/curly-en-GB/)
-* [Deutsch -- Deutschland und Österreich (de-DE)](https://peter88213.github.io/curly-de-DE/) 
-* [Deutsch -- Schweiz (de-CH)](https://peter88213.github.io/curly-de-CH/)
-* [Français (fr-FR)](https://peter88213.github.io/curly-fr-FR/)
+You can download the full source code of this project [here](https://github.com/peter88213/curly/releases). If you have got your own GitHub account, you might want to give my cool project a star to bookmark it. If you are still considering forking this project, read [this](https://ericgreer.info/post/judging-the-stupidity-of-github-projects/) first.
 
 ## License
 
