@@ -2,7 +2,7 @@
 
 [English](help-en.html) | [Deutsch](help-de.html)
 
-## Conventions
+## Mode d'emploi
 
 ### Définitions
 

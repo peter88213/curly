@@ -2,7 +2,7 @@
 
 [English](help-en.html) | [Français](help-fr.html)
 
-## Konventionen
+## Benutzungshinweise
 
 ### Definitionen
 
