@@ -1,6 +1,6 @@
 # "Curly quotes" conversion for LibreOffice and OpenOffice
 
-Other languages: [de-DE](https://github.com/peter88213/curly/tree/master/oxt-de-DE) | [de-CH](https://peter88213.github.io/curly-de-CH/) | [fr-FR](https://github.com/peter88213/curly/tree/master/oxt-fr-FR)
+Other languages: [de-DE](https://peter88213.github.io/curly-de-DE/) | [de-CH](https://peter88213.github.io/curly-de-CH/) | [fr-FR](https://github.com/peter88213/curly/tree/master/oxt-fr-FR)
 
 ![Screenshot: "curly" menu](https://raw.githubusercontent.com/peter88213/curly/master/docs/Screenshots/Menu-ae.png)
 
