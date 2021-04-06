@@ -1,6 +1,6 @@
-# Conversion des guillemets pour LibreOffice et OpenOffice
+[English](help-en.html) | [Deutsch](help-de.html) | [visitez le site web du projet](https://peter88213.github.io/curly/)
 
-[English](help-en.html) | [Deutsch](help-de.html) | [site web](https://peter88213.github.io/curly/)
+# Conversion des guillemets pour LibreOffice et OpenOffice
 
 ## Mode d'emploi
 

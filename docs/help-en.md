@@ -1,6 +1,6 @@
-# "Curly quotes" conversion for LibreOffice and OpenOffice
+[Deutsch](help-de.html) | [Français](help-fr.html) | [Visit the project website](https://peter88213.github.io/curly/)
 
-[Deutsch](help-de.html) | [Français](help-fr.html) | [website](https://peter88213.github.io/curly/)
+# "Curly quotes" conversion for LibreOffice and OpenOffice
 
 ## Instructions for use
 

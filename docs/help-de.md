@@ -1,6 +1,6 @@
-# Konvertierung von Anführungszeichen für LibreOffice und OpenOffice
+[English](help-en.html) | [Français](help-fr.html) | [Besuchen Sie die Projekt-Website](https://peter88213.github.io/curly/)
 
-[English](help-en.html) | [Français](help-fr.html) | [website](https://peter88213.github.io/curly/)
+# Konvertierung von Anführungszeichen für LibreOffice und OpenOffice
 
 ## Benutzungshinweise
 
