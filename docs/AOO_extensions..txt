@@ -13,6 +13,6 @@ Features
 
 NOTE: 
 The releases below are for Apache OpenOffice 4.x.
-Variants for OpenOffice 3.x and for LibreOffice 6.x can be found here:
+Variants for OpenOffice 3.x and for LibreOffice 6+ can be found here:
 https://github.com/peter88213/curly/releases/latest
 
