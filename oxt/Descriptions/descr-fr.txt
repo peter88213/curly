@@ -1,0 +1,2 @@
+Citations intelligentes, apostrophes typographiques, ellipses, etc.
+Ajoute une barre d'outils et un sous-menu dans le menu "Format".
