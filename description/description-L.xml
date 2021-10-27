@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Extension files were created by Extension Compiler - version 2.1.2 -->
+<description xmlns="http://openoffice.org/extensions/description/2006"
+ xmlns:dep="http://openoffice.org/extensions/description/2006"
+ xmlns:l="http://libreoffice.org/extensions/description/2011"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+   <identifier value="org.peter88213.curly_%lc%-%cc%" />
+   <version value="0.99.0" />
+   <extension-description>
+      <src xlink:href="Descriptions/descr-en.txt" lang="en"/>
+      <src xlink:href="Descriptions/descr-de.txt" lang="de"/>
+      <src xlink:href="Descriptions/descr-fr.txt" lang="fr"/>
+   </extension-description>
+   <registration>
+      <simple-license accept-by="admin" suppress-on-update="true" >
+         <license-text xlink:href="Legal/license-en.txt" lang="en" />
+      </simple-license>
+   </registration>
+   <update-information>
+      <src xlink:href="https://raw.githubusercontent.com/peter88213/curly-%lc%-%cc%/master/curly_%lc%-%cc%-L.update.xml" />
+   </update-information>
+   <dependencies>
+      <l:LibreOffice-minimal-version value="6.0" dep:name="LibreOffice 6.0 minimum, or more recent" />
+   </dependencies>
+   <display-name>
+      <name lang="en">curly (%lc%-%cc%)</name>
+      <name lang="de">curly (%lc%-%cc%)</name>
+   </display-name>
+   <publisher>
+      <name lang="en" xlink:href="https://github.com/peter88213">Peter Triesberger</name>
+   </publisher>
+</description>
