@@ -23,8 +23,7 @@
       <l:LibreOffice-minimal-version value="6.0" dep:name="LibreOffice 6.0 minimum, or more recent" />
    </dependencies>
    <display-name>
-      <name lang="en">curly (%lc%-%cc%)</name>
-      <name lang="de">curly (%lc%-%cc%)</name>
+      <name lang="en">curly (%lc%-%cc%))</name>
    </display-name>
    <publisher>
       <name lang="en" xlink:href="https://github.com/peter88213">Peter Triesberger</name>

@@ -23,7 +23,6 @@
    </dependencies>
    <display-name>
       <name lang="en">curly (%lc%-%cc%)</name>
-      <name lang="de">curly (%lc%-%cc%)</name>
    </display-name>
    <publisher>
       <name lang="en" xlink:href="https://github.com/peter88213">Peter Triesberger</name>
