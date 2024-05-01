@@ -51,8 +51,8 @@ Sub Apostrophe
 Dim AOldStr(1) As String
 Dim ANewStr(1) As String
 
-AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;#&quot;)
-ANewStr() = Array(&quot;$1&quot;+ChApostrophe+&quot;$2&quot;,ChApostrophe)
+AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;([:alnum:])#&quot;,&quot;#([:alnum:])&quot;)
+ANewStr() = Array(&quot;$1&quot;+ChApostrophe+&quot;$2&quot;,&quot;$1&quot;+ChApostrophe,ChApostrophe+&quot;$1&quot;)
 
 sar(AOldStr,ANewStr,True)
 
