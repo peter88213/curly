@@ -4,12 +4,12 @@
  xmlns:dep="http://openoffice.org/extensions/description/2006"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
    <identifier value="org.peter88213.curly_de-CH" />
-   <version value="3.3.1" />
+   <version value="3.3.2" />
    <dependencies>
       <OpenOffice.org-minimal-version value="4.0" dep:name="Apache OpenOffice 4.0 minimum, or more recent" />
    </dependencies>
    <update-download>
-      <src xlink:href="https://raw.githubusercontent.com/peter88213/curly-de-CH/master/curly_de-CH-A-3.3.1.oxt" />
+      <src xlink:href="https://raw.githubusercontent.com/peter88213/curly-de-CH/master/curly_de-CH-A-3.3.2.oxt" />
    </update-download>
    <publisher>
       <name lang="en" xlink:href="https://github.com/peter88213">Peter Triesberger</name>
