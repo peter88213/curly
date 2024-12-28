@@ -242,8 +242,11 @@ dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 &apos; ----------------------------------------------------------------------
 &apos; save cursor position
 
+oSaveCursor = ThisComponent.Text.createTextCursor()
 oViewCursor = ThisComponent.CurrentController().getViewCursor()
+On Local Error Resume Next
 oSaveCursor = ThisComponent.Text.createTextCursorByRange(oViewCursor)
+oViewCursor.gotoRange(oSaveCursor,False)
 
 &apos; ----------------------------------------------------------------------
 &apos; select whole text
@@ -335,7 +338,6 @@ dim dispatcher as object
 dim oSaveCursor as object
 dim oViewCursor as object
 
-
 &apos; ----------------------------------------------------------------------
 &apos; get access to the document
 
@@ -345,8 +347,12 @@ dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
 &apos; ----------------------------------------------------------------------
 &apos; save cursor position
 
+
+oSaveCursor = ThisComponent.Text.createTextCursor()
 oViewCursor = ThisComponent.CurrentController().getViewCursor()
+On Local Error Resume Next
 oSaveCursor = ThisComponent.Text.createTextCursorByRange(oViewCursor)
+oViewCursor.gotoRange(oSaveCursor,False)
 
 &apos; ----------------------------------------------------------------------
 &apos; select whole text
