@@ -12,6 +12,14 @@ To find out more, please select a language:
 * [Deutsch -- Schweiz (de-CH)](https://peter88213.github.io/curly-de-CH/)
 * [Français (fr-FR)](https://peter88213.github.io/curly-fr-FR/)
 
+## See also
+
+- [StyleSwitcher](https://peter88213.github.io/StyleSwitcher/):
+  Quickly switch between the style sheets of different document templates. 
+- [emph](https://peter88213.github.io/emph/):
+  Use character styles instead of direct formatting to mark up text.
+
+
 ## License
 
 The "curly quotes" extensions are distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
