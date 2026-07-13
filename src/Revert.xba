@@ -25,6 +25,7 @@ Const ChEllipsis = &quot;…&quot;
 Const ChApostrophe = &quot;’&quot;
 
 
+
 sub PrimeI
 &apos; ----------------------------------------------------------------------
 &apos; Convert substituted quotes into primes.
@@ -34,8 +35,8 @@ sub PrimeI
 Dim AOldStr(5) As String
 Dim ANewStr(5) As String
 
-AOldStr() = Array(sChOpen1,sChClose1,sChOpen2,sChClose2,sChApostrophe,&quot;([:alpha:])#([:alpha:])&quot;)
-ANewStr() = Array(Chr(34),Chr(34),&quot;&apos;&quot;,&quot;&apos;&quot;,&quot;#&quot;,&quot;$1&apos;$2&quot;)
+AOldStr() = Array(sChOpen1,sChClose1,sChOpen2,sChClose2,sChApostrophe,&quot;([:alpha:])&quot;+ChApostropheSubst+&quot;([:alpha:])&quot;)
+ANewStr() = Array(Chr(34),Chr(34),&quot;&apos;&quot;,&quot;&apos;&quot;,ChApostropheSubst,&quot;$1&apos;$2&quot;)
 
 Common.sar(AOldStr,ANewStr,True)
 
@@ -52,8 +53,8 @@ sub PrimeII
 Dim AOldStr(5) As String
 Dim ANewStr(5) As String
 
-AOldStr() = Array(sChOpen1,sChClose1,sChOpen2,sChClose2,sChApostrophe,&quot;([:alpha:])#([:alpha:])&quot;)
-ANewStr() = Array(&quot;&apos;&quot;,&quot;&apos;&quot;,Chr(34),Chr(34),&quot;#&quot;,&quot;$1&apos;$2&quot;)
+AOldStr() = Array(sChOpen1,sChClose1,sChOpen2,sChClose2,sChApostrophe,&quot;([:alpha:])&quot;+ChApostropheSubst+&quot;([:alpha:])&quot;)
+ANewStr() = Array(&quot;&apos;&quot;,&quot;&apos;&quot;,Chr(34),Chr(34),ChApostropheSubst,&quot;$1&apos;$2&quot;)
 
 Common.sar(AOldStr,ANewStr,True)
 
@@ -114,7 +115,7 @@ End Sub
 
 Sub UnprotectQM
 &apos; ----------------------------------------------------------------------
-&apos; Replace non-breakable spaces by simple spaces at double hyphens
+&apos; Replace non-breakable spaces with simple spaces at double hyphens
 &apos; and triple periods leading or terminating direct speech.
 &apos; ----------------------------------------------------------------------
 

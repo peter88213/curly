@@ -7,6 +7,8 @@
 
 Option Explicit
 
+Public Const ChApostropheSubst = &quot;´&quot;
+
 &apos; ----------------------------------------------------------------------
 &apos; Define quote substitutes for intermediate formatting
 &apos; ----------------------------------------------------------------------
@@ -46,12 +48,12 @@ End Sub
 
 Sub Apostrophe
 &apos; ----------------------------------------------------------------------
-&apos; Replace number signs and non-spaced single primes by apostrophes.
+&apos; Replace number signs and non-spaced single primes with apostrophes.
 &apos; ----------------------------------------------------------------------
 Dim AOldStr(1) As String
 Dim ANewStr(1) As String
 
-AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;([:alnum:])#&quot;,&quot;#([:alnum:])&quot;)
+AOldStr() = Array(&quot;([:alpha:])&apos;([:alpha:])&quot;,&quot;([:alnum:])&quot;+ChApostropheSubst,ChApostropheSubst+&quot;([:alnum:])&quot;)
 ANewStr() = Array(&quot;$1&quot;+ChApostrophe+&quot;$2&quot;,&quot;$1&quot;+ChApostrophe,ChApostrophe+&quot;$1&quot;)
 
 sar(AOldStr,ANewStr,True)
@@ -62,7 +64,7 @@ End Sub
 
 Sub Ellipsis
 &apos; ----------------------------------------------------------------------
-&apos; Replace triple periods by ellipses.
+&apos; Replace triple periods with ellipses.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(0) As String
@@ -79,7 +81,7 @@ End Sub
 
 sub En_dash
 &apos; ----------------------------------------------------------------------
-&apos; Replace double hyphens by en-dashes.
+&apos; Replace double hyphens with en-dashes.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(0) As String
@@ -96,7 +98,7 @@ End Sub
 
 sub Em_dash
 &apos; ----------------------------------------------------------------------
-&apos; Replace double hyphens by em-dashes.
+&apos; Replace double hyphens with em-dashes.
 &apos; ----------------------------------------------------------------------
 
 Dim AOldStr(0) As String
@@ -150,7 +152,7 @@ End Sub
 
 sub SubstitutePrimesI
 &apos; ----------------------------------------------------------------------
-&apos; Replace single and double primes by &quot;neutral&quot; quote substitutes
+&apos; Replace single and double primes with &quot;neutral&quot; quote substitutes
 &apos; according to parameters.
 &apos; Initial quotation is single (&apos;)
 &apos; ----------------------------------------------------------------------
@@ -168,7 +170,7 @@ End Sub
 
 sub SubstitutePrimesII
 &apos; ----------------------------------------------------------------------
-&apos; Replace single and double primes by &quot;neutral&quot; quote substitutes
+&apos; Replace single and double primes with &quot;neutral&quot; quote substitutes
 &apos; according to parameters.
 &apos; Initial quotation is double (&quot;)
 &apos; ----------------------------------------------------------------------
@@ -186,7 +188,7 @@ End Sub
 
 sub SubstituteQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 &apos; ----------------------------------------------------------------------
-&apos; Replace curly quotes by &quot;neutral&quot; substitutes
+&apos; Replace curly quotes with &quot;neutral&quot; substitutes
 &apos; according to parameters.
 &apos; ----------------------------------------------------------------------
 
@@ -206,7 +208,7 @@ End Sub
 
 sub CurlyQuotes(ChOpen1,ChClose1,ChOpen2,ChClose2)
 &apos; ----------------------------------------------------------------------
-&apos; Replace &quot;neutral&quot; quote substitutes by curly quotes
+&apos; Replace &quot;neutral&quot; quote substitutes with curly quotes
 &apos; according to parameters.
 &apos; ----------------------------------------------------------------------
 
@@ -224,7 +226,7 @@ End Sub
 
 sub ShowDirectSpeech(QuotedTextPattern)
 &apos; ----------------------------------------------------------------------
-&apos; Colorize non-direct speech (as defined by regular expression)
+&apos; Colorize non-direct speech (as defined with regular expression)
 &apos; light gray.
 &apos; ----------------------------------------------------------------------
 

@@ -12,11 +12,11 @@
 
 ### Apostrophe
 
-* Um Verwechslungen mit einfachen Anführungszeichen zu vermeiden, ist es ratsam, führende oder nachlaufende Apostrophe bei der Eingabe durch ein Nummernzeichen (`#`) zu ersetzen.
+* Um Verwechslungen mit einfachen Anführungszeichen zu vermeiden, ist es ratsam, führende und nachlaufende Apostrophe bei der Eingabe durch Aufwärtsakzente (`´`) zu ersetzen.
 
-* Nummernzeichen (`#`) werden bei der Konvertierung von  _Schreibmaschinenstil_  in einen  _Sprachenstil_  durch Apostrophe ersetzt.
+* Aufwärtsakzente (`´`) werden bei der Konvertierung von  _Schreibmaschinenstil_  in einen  _Sprachenstil_  durch Apostrophe ersetzt.
 
-* Bei der Konvertierung von einem  _Sprachenstil_  in den  _Schreibmaschinenstil_  werden Apostrophe eventuell automatisch durch Nummernzeichen (`#`) ersetzt. 
+* Bei der Konvertierung von einem  _Sprachenstil_  in den  _Schreibmaschinenstil_  werden führende und nachlaufende Apostrophe nach Möglichkeit automatisch durch Aufwärtsakzente (`´`) ersetzt. 
 
 ### Bindestriche
 

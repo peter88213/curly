@@ -12,11 +12,11 @@
 
 ### Des apostrophes
 
-* Afin d'éviter toute confusion avec les guillemets simples, il est conseillé de remplacer les apostrophes de tête ou de queue par un croisillon (`#`) lorsque vous tapez.
+* Afin d'éviter toute confusion avec les guillemets simples, il est conseillé de remplacer les apostrophes de tête ou de queue par accents aigus (`´`) lorsque vous tapez.
 
-* Les croisillons (`#`) seront remplacés par des apostrophes lors de la conversion du  _style de la machine à écrire_  en  _style de langue_ .
+* Les accents aigus (`´`) seront remplacés par des apostrophes lors de la conversion du  _style de la machine à écrire_  en  _style de langue_ .
 
-* Lors de la conversion d'un  _style de langue_  en  _style de machine à écrire_ , les apostrophes peuvent être remplacées automatiquement par des croisillons (`#`). 
+* Lors de la conversion d'un  _style de langue_  en  _style de machine à écrire_ , les apostrophes de tête ou de queue être remplacées automatiquement par des accents aigus (`´`). 
 
 ### Des tirets
 

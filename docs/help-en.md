@@ -12,11 +12,10 @@
 
 ### Apostrophes
 
-* In order to avoid confusion with single quotes, it is advised to substitute leading or trailing apostrophes by a number sign (`#`) when typing.
+* In order to avoid confusion with single quotes, it is advised to substitute leading or trailing apostrophes with acute accents (`´`) when typing.
 
-* Number signs (`#`) will be replaced with apostrophes when converting from  _typewriter style_  to a  _language style_.
+* Acute accents (`´`) will be replaced with apostrophes when converting from  _typewriter style_  to a  _language style_.
 
-* When converting from a  _language style_  to  _typewriter style_, apostrophes might be replaced automatically with number signs (`#`). 
 
 ### Dashes
 
