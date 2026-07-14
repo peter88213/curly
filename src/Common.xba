@@ -48,12 +48,13 @@ End Sub
 
 Sub Apostrophe
 &apos; ----------------------------------------------------------------------
-&apos; Replace number signs and non-spaced single primes with apostrophes.
+&apos; Replace non-spaced primes and single closing quotes
+&apos; and substituted apostrophes with curly apostrophes.
 &apos; ----------------------------------------------------------------------
 Dim AOldStr(1) As String
 Dim ANewStr(1) As String
 
-AOldStr() = Array(&quot;([:alpha:])[‘&apos;]([:alpha:])&quot;,&quot;([:alnum:])&quot;+ChApostropheSubst,ChApostropheSubst+&quot;([:alnum:])&quot;)
+AOldStr() = Array(&quot;([:alpha:])[‘&apos;‹]([:alpha:])&quot;,&quot;([:alnum:])&quot;+ChApostropheSubst,ChApostropheSubst+&quot;([:alnum:])&quot;)
 ANewStr() = Array(&quot;$1&quot;+ChApostrophe+&quot;$2&quot;,&quot;$1&quot;+ChApostrophe,ChApostrophe+&quot;$1&quot;)
 
 sar(AOldStr,ANewStr,True)
